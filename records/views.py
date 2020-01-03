@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Record
 
-"""View function that returns all the products in the database """
-def all_products(request):
-    products = Product.objects.all()
-    return render(request, "products.html", {"products": products})
+"""View function that returns all the records in the database """
+def all_records(request):
+    records = Record.objects.all()
+    return render(request, "records.html", {"records": records})

@@ -60,7 +60,7 @@ def registration(request):
 
         """If form is valid, then save the user data to database"""
         if registration_form.is_valid():
-            registration_form.save()
+            registration_form.islower().save()
 
             """Reference the authenticated data to object called user """
             user = auth.authenticate(username=request.POST['username'],
