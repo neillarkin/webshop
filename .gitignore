@@ -1,5 +1,0 @@
-*.sqlite3
-*.pyc
-webshop/__pycache__/
-.c9/
-*.gitignore
