@@ -6,7 +6,7 @@ def view_cart(request):
     """# no Dict returned here because context.py (cart_cotents) is global"""
     return render(request, "cart.html") 
 
-"""Add record qunatiti to the cart"""
+"""Add record qunatity to the cart"""
 def add_to_cart(request, id):
     quantity = int(request.POST.get('quantity')) #get quantity from records.html form
 
@@ -21,6 +21,8 @@ def add_to_cart(request, id):
 
 
 """Update the record quantity to the desired amount"""
+
+"""Increase or decrease the quantity in the cart"""
 def adjust_cart(request, id):
 
     quantity = int(request.POST.get('quantity')) #get exisitng quantitiy as an integer

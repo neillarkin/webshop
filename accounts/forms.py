@@ -32,6 +32,7 @@ class UserRegistrationForm(UserCreationForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
+        
         """The filter function checks if the email already exists in the database"""
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'Email address must be unique')
