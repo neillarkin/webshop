@@ -18,9 +18,12 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand " href="#">Record Shop</a>
-        
-<div class="collapse navbar-collapse" id="navbarSupportedContent">  
+    <a class="navbar-brand " href="{% url 'index' %}">Record Shop</a>
+    <form class="form-inline my-2 my-lg-0"  action="{% url 'search' %}" method="get">
+    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form> 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">  
     <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
             <li class="nav-item" ><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
@@ -47,19 +50,15 @@
    <!--If Django messages is true then display that message.
    A message is created from each of the accounts/views functions)-->
     {% if messages %}
-    <div>
+    <div class="alert alert-success" role="alert">
         {% for message in messages %} 
             {{ message }} 
         {% endfor %}
     </div>
     {% endif %} 
     
-    <div class="container">
-        <form class="form-inline my-2 my-lg-0"  action="{% url 'search' %}" method="get">
-            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
+    <!--<div class="container">-->
+    <!--</div>-->
     
     {% block content %}
     {% endblock %}
