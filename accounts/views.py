@@ -14,7 +14,7 @@ def index(request):
 def logout(request):
     """Logs the current user out and returns to Index page"""
     auth.logout(request)
-    messages.success(request, "You are logged out")
+    messages.success(request, "You are logged out!")
     return redirect(reverse('index'))  
     # 'reverse' allows us to pass the name of a URL instead of the name of a View
 
