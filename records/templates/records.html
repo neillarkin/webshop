@@ -2,30 +2,38 @@
 
 {% block content %}
 
+                        <!--d-flex align-items-center -->
 <div class="container-fluid">
-<div class="row row-flex">
-    {% for record in records %}
-    <div class="col-10 col-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-        <div class="panel-body">
-            <div class="record" style="background-image: url('{{ MEDIA_URL }}{{ record.image }}')"></div>
-            
-            <h4>{{ record.name }}</h4>
-            <p class="record-description">{{ record.description }}</p>
-            <p>{{ record.price }}</p>
-            
-            <form method="post" action="{% url 'add_to_cart' record.id %}">
-            {% csrf_token %}
-                <div class="input-group">
-                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                    <span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Add</button>
-                    </span>
-                </div>
-            </form>
-            
-        </div>
-    </div>
-    {% endfor %}
-</div>
+  <div class="row ">
+    
+      <div class="card-deck mx-auto ">
+        
+        {% for record in records %}
+          <div class="card">
+            <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+            <div class="card-body ">
+              <h5 class="card-title">{{ record.name }}</h5>
+              <p class="card-text">{{ record.description }}</p>
+              <p class="card-text">{{ record.price }}</p>
+            </div>
+            <div class="card-footer">
+              <small>
+                  <form method="post" action="{% url 'add_to_cart' record.id %}">
+                    {% csrf_token %}
+                        <div class="input-group ">
+                             <span><input name="quantity" type="number" min="1" max="999" class="form-control form-control-sm" value="1"></span> 
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-sm" type="submit">Add to Cart</button>
+                            </span>
+                        </div>
+                    </form>
+              </small>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+      
+  </div>
 </div>
 {% endblock %}
