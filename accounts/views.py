@@ -10,6 +10,8 @@ def index(request):
     return render(request,  'index.html')
 
 """Before exectuing Logout, this Decorator checks if user is already logged in"""
+
+
 @login_required 
 def logout(request):
     """Logs the current user out and returns to Index page"""

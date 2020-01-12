@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
 from records import urls as urls_records
+from artists import urls as urls_artists
 from cart import urls as urls_cart
 from search import urls as urls_search
 from checkout import urls as urls_checkout
@@ -28,6 +29,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', all_records, name='index'),
     url(r'^accounts/', include(urls_accounts)),
+    url(r'^artists/', include(urls_artists)),
     url(r'^records/', include(urls_records)),
     url(r'^cart/', include(urls_cart)),
     url(r'^checkout/', include(urls_checkout)),

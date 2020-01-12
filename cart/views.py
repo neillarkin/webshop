@@ -7,6 +7,8 @@ def view_cart(request):
     return render(request, "cart.html") 
 
 """Add record qunatity to the cart"""
+
+
 def add_to_cart(request, id):
     quantity = int(request.POST.get('quantity')) #get quantity from records.html form
 

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+  <div class="row ">
+
+    <div class="card-deck mx-auto ">
+        {% for artist in artists %}
+        <div class="card">
+        <i class="card-img-top mx-auto fas fa-user fa-9x"></i>
+
+        <div class="card-body">
+          <h5 class="card-title">{{ artist.name }}</h5>
+          <p class="card-text">
+            
+            <a href="{% url 'artists_records' artist.id %}"> Artists Records</a>
+     
+          </p>
+        </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-                        <!--d-flex align-items-center -->
+
 <div class="container-fluid">
   <div class="row ">
     
@@ -12,9 +12,10 @@
           <div class="card">
             <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
             <div class="card-body ">
-              <h5 class="card-title">{{ record.name }}</h5>
-              <p class="card-text">{{ record.description }}</p>
-              <p class="card-text">{{ record.price }}</p>
+              <h5 class="card-title">{{ record.artist }}</h5>
+              <h6 class="card-title">{{ record.name }}</h6>
+              <small><p class="card-text">{{ record.description }}</p></small>
+              <p class="card-text">€{{ record.price }}</p>
             </div>
             <div class="card-footer">
               <small>
