@@ -1,5 +1,45 @@
+{% extends 'base.html' %}
 
-{{artist.name}}
- {% for record in artists_records %}
-    {{record}}
-  {% endfor %}
+{% block page_title %}{{artist.name}}{% endblock %} 
+
+{% block page_heading %}Records by {{artist.name}}{% endblock %} 
+
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row ">
+
+   <div class="card-deck mx-auto ">
+  
+    {% for record in artists_records %}
+      <div class="card">
+      <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+       <div class="card-body ">
+         <h6 class="card-title">{{ record.name }}</h6>
+         <small><p class="card-text">{{ record.description }}</p></small>
+         <p class="card-text">€{{ record.price }}</p>
+       </div>
+      <div class="card-footer">
+       <small>
+           <form method="post" action="{% url 'add_to_cart' record.id %}">
+             {% csrf_token %}
+                 <div class="input-group ">
+                      <span><input name="quantity" type="number" min="1" max="999" class="form-control form-control-sm" value="1"></span> 
+                     <span class="input-group-btn">
+                         <button class="btn btn-success btn-sm" type="submit">Add to Cart</button>
+                     </span>
+                 </div>
+             </form>
+       </small>
+     </div>
+       
+       
+      </div>
+     {% endfor %}
+     
+    </div>
+    
+    
+  </div>
+</div>
+{% endblock %}
