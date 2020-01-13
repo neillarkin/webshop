@@ -25,7 +25,7 @@
         <a class="navbar-brand" href="{% url 'index' %}">Record Store</a>
 
         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
-            <input class="form-control mr-sm-2 col-8" type="search" name="q" placeholder="Search" aria-label="Search">
+            <input class="form-control mr-sm-2 col-8 " type="search" name="q" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0 col-2" type="submit"><i class="fas fa-search"></i></button>
         </form>
      
@@ -52,17 +52,26 @@
        
     </nav>
 
-    <h3>
-        {% block page_heading %}{% endblock %}
-    </h3>
-
     <!--If Django messages is true then display that message.
    A message is created from each of the accounts/views functions)-->
     {% if messages %}
     <div class="alert alert-success" role="alert">
-        {% for message in messages %} {{ message }} {% endfor %}
+        {% for message in messages %} 
+            <div class="text-center">
+                {{ message }} 
+            </div>
+        {% endfor %}
     </div>
     {% endif %}
+
+<div class="container">
+    <div class="row">
+    <h4>
+         <small class="text-muted">{% block page_heading %}{% endblock %}</small>
+    </h4>
+    </div>
+</div>
+
 
     
 
