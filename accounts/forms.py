@@ -7,13 +7,14 @@ from django.core.exceptions import ValidationError
 class UserLoginForm(forms.Form):
     """User login form"""
 
-    username = forms.CharField() 
+    username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput) 
     """special pasword textbox constructed from CharField class in Django Forms library"""
 
 """Form used to register a new user. Constructed with Django UserCreationForm param"""
 class UserRegistrationForm(UserCreationForm):
     
+
     """Labels are used for password as Django will use form field 'name' by default"""
     password1 = forms.CharField(
         label="Password",
@@ -34,7 +35,9 @@ class UserRegistrationForm(UserCreationForm):
         username = self.cleaned_data.get('username')
         
         """The filter function checks if the email already exists in the database"""
-        if User.objects.filter(email=email).exclude(username=username):
+        """iexact() runs case-insensitive query on the database to check that the same username 
+        with a different case isn't already present"""
+        if User.objects.filter(email__iexact=email).exclude(username__iexact=username):
             raise forms.ValidationError(u'Email address must be unique')
         return email
 
