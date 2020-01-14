@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import TextInput
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
@@ -7,7 +8,7 @@ from django.core.exceptions import ValidationError
 class UserLoginForm(forms.Form):
     """User login form"""
 
-    username = forms.CharField()
+    username = forms.CharField(widget=TextInput(attrs={'placeholder': 'name@example.com'}))
     password = forms.CharField(widget=forms.PasswordInput) 
     """special pasword textbox constructed from CharField class in Django Forms library"""
 

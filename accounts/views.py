@@ -84,6 +84,33 @@ def registration(request):
         
 
 def user_profile(request):
-    """Retrieve user from database using email to get that specific user object"""
+    """Retrieve user from database using email which is unique to a user object"""
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})
+    
+def edit_profile(request):
+    user = User.objects.get(email=request.user.email)
+    return render(request, 'edit_profile.html', {"profile": user})
+    
+def update_profile(request):
+    user = User.objects.get(email=request.user.email)
+    
+    """Save only if there is a difference between username form POST and DB table row """
+    if user.username != request.POST['username']:
+        user.username = request.POST['username']
+        user.save()
+        messages.success(request, "Name updated!")
+        
+    """ Email must remain unique to each user so form POST is first checked if 
+        it exists using filter with case-senstive parametre iexact.
+    """
+    if user.email != request.POST['email']:
+        if User.objects.filter(email__iexact=request.POST['email']).exists():
+            messages.error(request, "That email is already taken!")
+            return redirect(reverse('edit_profile'))
+        else:
+            user.email = request.POST['email']
+            user.save()
+            messages.success(request, "Email updated!")
+        
+    return redirect(reverse('profile'))

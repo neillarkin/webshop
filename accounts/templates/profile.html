@@ -2,9 +2,38 @@
 
 {% block page_title %}{{ user }}'s Profile{% endblock %} 
 
-{% block page_heading %}{{ user }}'s Profile{% endblock %} 
+{% block page_heading %}{{ user|title }}'s Profile{% endblock %} 
 
 {% block content %}
-<i class="fas fa-user fa-9x"></i>
-<h6>{{ profile.email }}</h6>
+<div class="container">
+    <div class="row">
+        
+<div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+         <i class="fas fa-user fa-9x"></i>
+         
+        <form method="post" action="{% url 'edit_profile' %}">
+            {% csrf_token %}
+            <h6 class="card-title">Name: <span class="text-muted">{{ user }} </span></h6>
+            <h6  class="card-text">Email:<span class="text-muted"> {{ profile.email }}</span></h6>
+            <button class="btn btn-primary">Edit</button>
+        </form>
+        
+            <div class="row">
+              <div class="col-md-12 mt-1">
+             <p class="float-right"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+      </div>
+    </div>
+        
+      </div>
+    </div>
+ </div>
+        
+        
+    </div>
+</div>
+
 {% endblock %}
+
+
