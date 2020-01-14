@@ -12,10 +12,10 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput) 
     """special pasword textbox constructed from CharField class in Django Forms library"""
 
+
 """Form used to register a new user. Constructed with Django UserCreationForm param"""
 class UserRegistrationForm(UserCreationForm):
     
-
     """Labels are used for password as Django will use form field 'name' by default"""
     password1 = forms.CharField(
         label="Password",

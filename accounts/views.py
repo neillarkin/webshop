@@ -3,7 +3,9 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
-
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from django import forms
 
 def index(request):
     """Returns the index.html page"""
@@ -101,10 +103,17 @@ def update_profile(request):
         user.save()
         messages.success(request, "Name updated!")
         
+   
     """ Email must remain unique to each user so form POST is first checked if 
-        it exists using filter with case-senstive parametre iexact.
+        it already exists using filter with case-senstive parametre 'iexact'
     """
     if user.email != request.POST['email']:
+        try:
+            validate_email(request.POST['email'])
+        except forms.ValidationError:
+            messages.error(request, "The email was invalid!")
+            return redirect(reverse('profile'))
+            
         if User.objects.filter(email__iexact=request.POST['email']).exists():
             messages.error(request, "That email is already taken!")
             return redirect(reverse('edit_profile'))
@@ -114,3 +123,4 @@ def update_profile(request):
             messages.success(request, "Email updated!")
         
     return redirect(reverse('profile'))
+    
