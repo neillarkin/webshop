@@ -1,6 +1,7 @@
 from django.shortcuts import render
-
+from .models import Genre
 
 def index(request):
     """ View that renders the home page"""
-    return render(request, "index.html")
+    genres = Genre.objects.all()
+    return render(request, "index.html", {"genres": genres})

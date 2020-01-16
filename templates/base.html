@@ -22,7 +22,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="{% url 'index' %}">Record Store</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Vinyl Records</a>
 
         <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
             <input class="form-control mr-sm-2 col-8 " type="search" name="q" placeholder="Search" aria-label="Search">
@@ -33,6 +33,19 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'artists' %}">Artists</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'records' %}">Records</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Genres
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'genres' %}">All</a>
+                        {% for genre in genres %}
+                            <a class="dropdown-item" href="{% url 'genres_records' genre.id %}">{{ genre.name }}</a>
+                         {% endfor %}
+                    </div>
+                </li>
+                
+                
                 {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Genres{% endblock %} 
+
+{% block page_heading %}Genres{% endblock %} 
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row ">
+    
+      <div class="card-deck mx-auto text-nowrap">
+        
+        {% for genre in genres %}
+          <div class="card">
+
+            <div class="card-body ">
+          
+              <h6 class="card-title"><a href="{% url 'genres_records' genre.id %}" >{{ genre.name }}</a></h6>
+              <small><p class="card-text"></p></small>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+  
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+      
+  </div>
+</div>
+{% endblock %}

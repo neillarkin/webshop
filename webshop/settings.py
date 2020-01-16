@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'records',
     'artists',
+    'genres',
     'cart',
     'checkout',
 ]
