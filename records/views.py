@@ -6,4 +6,4 @@ from genres.models import Genre
 def all_records(request):
     records = Record.objects.all()
     genres = Genre.objects.all()
-    return render(request, "records.html", {"records": records, "genres": genres})
+    return render(request, "records.html",  {"records": records, "genres": genres})

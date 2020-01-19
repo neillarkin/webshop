@@ -10,8 +10,8 @@ class Record(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='images')
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, default='0')
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, default='0')
-
+    genres = models.ManyToManyField(Genre)
+    
     """ This function returns the name of a record as a string"""
     def __str__(self):
         return self.name
