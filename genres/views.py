@@ -5,7 +5,8 @@ from records.models import Record
 # Create your views here.
 def all_genres(request):
     genres = Genre.objects.all()
-    return render(request, "genres.html", {"genres": genres})
+    records = Record.objects.all()
+    return render(request, "genres.html", {"genres": genres, "records": records})
     
 
 def genres_records(request, id):

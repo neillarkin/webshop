@@ -5,7 +5,7 @@
 {% block page_heading %}Genres{% endblock %} 
 
 {% block content %}
-
+ 
 <div class="container-fluid">
   <div class="row ">
     
@@ -17,7 +17,27 @@
             <div class="card-body ">
           
               <h6 class="card-title"><a href="{% url 'genres_records' genre.id %}" >{{ genre.name }}</a></h6>
-              <small><p class="card-text">genre_count Records</p></small>
+              <small><p class="card-text">
+ 
+             {% for record in records %}
+      
+                {% for x in record.genres.all %}
+                  {% if x == genre %}
+                 
+                    {% with amount=forloop.counter %} 
+                    {{ amount }}
+                    {% endwith %}
+                   
+                  {% endif %}
+                   
+                {% endfor %}
+            {% endfor %}
+          
+          Records
+            
+          
+              
+              </p></small>
               <p class="card-text"></p>
             </div>
             <div class="card-footer">
