@@ -3,9 +3,13 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from records.models import Record
+# from wishlists.views import all_wishes
+from wishlists.models import Wishlist
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django import forms
+from wishlists.forms import WishForm
 
 def index(request):
     """Returns the index.html page"""
@@ -87,9 +91,13 @@ def registration(request):
 
 def user_profile(request):
     """Retrieve user from database using email which is unique to a user object"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
     
+    user = User.objects.get(email=request.user.email)
+    user_id = request.user.id
+    wishes = Wishlist.objects.filter(user_id=user_id)
+    
+    return render(request, 'profile.html', {"profile": user, "wishes": wishes})
+
 def edit_profile(request):
     user = User.objects.get(email=request.user.email)
     return render(request, 'edit_profile.html', {"profile": user})

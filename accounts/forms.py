@@ -14,6 +14,7 @@ class UserLoginForm(forms.Form):
 
 
 """Form used to register a new user. Constructed with Django UserCreationForm param"""
+
 class UserRegistrationForm(UserCreationForm):
     
     """Labels are used for password as Django will use form field 'name' by default"""

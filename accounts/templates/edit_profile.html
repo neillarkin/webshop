@@ -19,6 +19,7 @@
             <h6 class="card-title">Name:  <input name="username" type="text" value="{{user}}"></h6>
             <h6  class="card-text">Email:  <input name="email" type="text" value="{{ profile.email }}"></h6>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a type="reset" href="{% url 'profile' %}" class="btn btn-secondary ">Cancel</a>
         </form>
         
       </div>

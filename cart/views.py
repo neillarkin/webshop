@@ -12,7 +12,7 @@ def view_cart(request):
 def add_to_cart(request, id):
     quantity = int(request.POST.get('quantity')) #get quantity from records.html form
 
-    cart = request.session.get('cart', {}) #get cart from session (not database)
+    cart = request.session.get('cart', {}) #get cart from browser session (not database)
     if id in cart:
         cart[id] = int(cart[id]) + quantity #if exists, add ID & quantity
     else:
@@ -25,6 +25,7 @@ def add_to_cart(request, id):
 """Update the record quantity to the desired amount"""
 
 """Increase or decrease the quantity in the cart"""
+
 def adjust_cart(request, id):
 
     quantity = int(request.POST.get('quantity')) #get exisitng quantitiy as an integer
