@@ -24,13 +24,11 @@ def add_wish(request):
     else:
         wishlist_form = WishForm()
     wishes = Wishlist.objects.filter(user_id=request.user.id)
-    # return render(request, 'profile.html', {"profile": user, "wishes": wishes})
-    return redirect(reverse('index'))
-
-def edit_wish(request):
-    user = User.objects.get(email=request.user.email)
-    wishlist = request.POST.get(artist_name=request.user.artist_name, record_name=request.user.record_name)
-    return render(request, 'profile.html', {"profile": user, "wishlist": wishlist})
+    return redirect(reverse('profile'))
+          
+def edit_wish(request, id):
+    wish = Wishlist.objects.get(id=id)
+    return render(request, 'edit_wishlists.html', {'wish': wish})
     
 def update_wish(request):
     return render(request, 'profile.html')

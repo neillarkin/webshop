@@ -62,28 +62,33 @@
               
           <div class="card-footer">
             <small>    
-             {% for record in records %}
+             
                 <form method="post" action="">
                    {% csrf_token %}
+                   
                     <ul class="list-group mb-3">
-                       
+                         
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
+                          
                               <div>
-                                <h6 class="my-0"><a href="#">{{ record}}</a></h6>
-                                <small class="text-muted">{{ record }}</small>
+                                <h6 class="my-0">
+                                    <input name="artist_name" type="text" value="{{wish}}"></h6>
+                                <small class="text-muted">
+                                    <input name="record_name" type="text" value="{{wish.record_name}}"></small>
                               </div>
-                                <span class="text-muted">{{ record }} &nbsp;x&nbsp; €</span>
+                                <span class="text-muted">{{ wish }} &nbsp;x&nbsp; €</span>
+                                 
                         </li>
-                        
+                     
                     </ul>
+                       <a type="reset" href="{% url 'profile' %}" class="btn btn-secondary ">Cancel</a>
                 </form>
-            {% endfor %}
+          
             </small>
         </div>
   
   
-  
-  
+
   
             
           </div>
