@@ -72,23 +72,35 @@
                                 <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}">{{ wish.artist_name}}</a></h6>
                                 <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                               </div>
-                                <span class="text-muted">&nbsp;&nbsp;<a href="{% url 'remove_wish' wish.id %}" ><i class="fas fa-trash-alt btn"></i> </a></span>
+                                <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#exampleModal"></i> </a></span>
                         </li>
                     </ul>
 
-            {% endfor %}
+            
             </small>
         </div>
-  
-  
-  
+
             
           </div>
         
         </div>
     </div>
-    
-        
+    <div class="col-sm-6">
+           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    Do you want to remove <strong>{{ wish.record_name }} </strong> from your wishlist?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                    <a href = "{% url 'remove_wish' wish.id %}" class="btn btn-danger btn-sm">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div> 
+    </div>
+        {% endfor %}
         
 </div>
 </div>
