@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from accounts.views import logout, login, registration, user_profile, edit_profile, update_profile
-from wishlists.views import edit_wish, add_wish, update_wish
+from wishlists.views import edit_wish, add_wish, update_wish, remove_wish
 from accounts import url_reset
 
 
@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^add-wish/', add_wish, name="add_wish"),
     url(r'^edit_wish/(?P<id>\d+)', edit_wish, name='edit_wish'),
     url(r'^update-wish/(?P<id>\d+)', update_wish, name="update_wish"), 
+    url(r'^remove-wish/(?P<id>\d+)', remove_wish, name="remove_wish"),
     url(r'^password-reset/', include(url_reset))
 ]

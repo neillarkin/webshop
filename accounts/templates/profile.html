@@ -40,7 +40,7 @@
                 Add a record
               </a>
            
-               <div class="collapse" id="collapse">
+            <div class="collapse" id="collapse">
             <form method="post" action="{% url 'add_wish' %}">
                 {% csrf_token %}
                <div class="form-group ">
@@ -72,15 +72,13 @@
                                 <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}">{{ wish.artist_name}}</a></h6>
                                 <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                               </div>
-                                <span class="text-muted">&nbsp;&nbsp; </span>
+                                <span class="text-muted">&nbsp;&nbsp;<a href="{% url 'remove_wish' wish.id %}" ><i class="fas fa-trash-alt btn"></i> </a></span>
                         </li>
                     </ul>
 
             {% endfor %}
             </small>
         </div>
-  
-  
   
   
   

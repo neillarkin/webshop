@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from wishlists.models import Wishlist
 from django.shortcuts import render, redirect, reverse
 from django.core.exceptions import ValidationError
@@ -23,6 +24,7 @@ def add_wish(request):
             wishlist.record_name = request.POST.get('record_name')
             wishlist.user_id = user.id
             wishlist.save()
+            messages.success(request, "Record added to wishlist!")
     else:
         wishlist_form = WishForm()
     wishes = Wishlist.objects.filter(user_id=request.user.id)
@@ -40,7 +42,13 @@ def update_wish(request, id):
             wish.artist_name = request.POST.get('artist_name')
             wish.record_name = request.POST.get('record_name')
             wish.save()
+            messages.success(request, "Wishlist updated")
     else:
         wishlist_form = WishForm()
     return redirect(reverse('profile'))
-    
+
+def remove_wish(request, id):
+    wish = Wishlist.objects.get(id=id)
+    wish.delete()
+    messages.success(request, "Wishlist updated")
+    return redirect(reverse('profile'))
