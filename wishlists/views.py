@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from wishlists.models import Wishlist
 from django.shortcuts import render, redirect, reverse
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from django.contrib.auth.models import User
 from django import forms
 from .forms import WishForm
@@ -30,6 +32,15 @@ def edit_wish(request, id):
     wish = Wishlist.objects.get(id=id)
     return render(request, 'edit_wishlists.html', {'wish': wish})
     
-def update_wish(request):
-    return render(request, 'profile.html')
+def update_wish(request, id):
+    if request.method == "POST":
+        wishlist_form = WishForm(request.POST)
+        if wishlist_form.is_valid():
+            wish = Wishlist.objects.get(id=id)
+            wish.artist_name = request.POST.get('artist_name')
+            wish.record_name = request.POST.get('record_name')
+            wish.save()
+    else:
+        wishlist_form = WishForm()
+    return redirect(reverse('profile'))
     

@@ -17,8 +17,7 @@ urlpatterns = [
     url(r'^edit-profile/', edit_profile, name="edit_profile"),
     url(r'^update-profile/', update_profile, name="update_profile"),
     url(r'^add-wish/', add_wish, name="add_wish"),
-    # url(r'^edit-wish/', edit_wish, name="edit_wish"),
     url(r'^edit_wish/(?P<id>\d+)', edit_wish, name='edit_wish'),
-    url(r'^update-wish', update_wish, name="update_wish"), 
+    url(r'^update-wish/(?P<id>\d+)', update_wish, name="update_wish"), 
     url(r'^password-reset/', include(url_reset))
 ]

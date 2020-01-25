@@ -63,24 +63,25 @@
           <div class="card-footer">
             <small>    
              
-                <form method="post" action="">
+                <form method="post" action="{% url 'update_wish' wish.id %}">
                    {% csrf_token %}
                    
                     <ul class="list-group mb-3">
                          
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
-                          
+                         
                               <div>
                                 <h6 class="my-0">
                                     <input name="artist_name" type="text" value="{{wish}}"></h6>
                                 <small class="text-muted">
                                     <input name="record_name" type="text" value="{{wish.record_name}}"></small>
                               </div>
-                                <span class="text-muted">{{ wish }} &nbsp;x&nbsp; €</span>
+                                
                                  
                         </li>
                      
                     </ul>
+                     <button class="btn btn-primary" type="submit">Save</button>
                        <a type="reset" href="{% url 'profile' %}" class="btn btn-secondary ">Cancel</a>
                 </form>
           

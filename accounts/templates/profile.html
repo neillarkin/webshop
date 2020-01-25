@@ -63,20 +63,19 @@
           <div class="card-footer">
             <small>    
              {% for wish in wishlist %}
-                <form method="post" action="{% url 'edit_wish' wish.id %}">
+               
                    {% csrf_token %}
                     <ul class="list-group mb-3">
                        
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                               <div>
-                                <h6 name="artist_name" class="my-0"><a href="#">{{ wish.artist_name}}</a></h6>
+                                <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}">{{ wish.artist_name}}</a></h6>
                                 <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                               </div>
                                 <span class="text-muted">&nbsp;&nbsp; </span>
                         </li>
                     </ul>
-                    <button class="btn btn-primary">Edit</button>
-                </form>
+
             {% endfor %}
             </small>
         </div>
