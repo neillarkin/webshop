@@ -46,12 +46,12 @@
                <div class="form-group ">
                 <label for="formGroupInput">Artist</label>
                 <input name="artist_name" type="text" class="form-control" 
-                d="formGroupInput"  value="Artist">
+                d="formGroupInput"  value="">
               </div>
               <div class="form-group">
                 <label for="formGroupInput2">Track</label>
                 <input name = "record_name" type="text" class="form-control" 
-                id="formGroupInput2" placeholder="Track title">
+                id="formGroupInput2" placeholder="">
               </div>
              <button class="btn btn-primary" type="submit" 
              data-toggle="collapse" data-target="#collapse" aria-expanded="false" 
@@ -72,11 +72,11 @@
                                 <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}">{{ wish.artist_name}}</a></h6>
                                 <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                               </div>
-                                <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#exampleModal"></i> </a></span>
+                                <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#{{wish.record_name}}"></i> </a></span>
                         </li>
                     </ul>
 
-            
+            {% endfor %}
             </small>
         </div>
 
@@ -85,8 +85,10 @@
         
         </div>
     </div>
+    
     <div class="col-sm-6">
-           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {% for wish in wishlist %}
+           <div class="modal fade" id="{{wish.record_name}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body">
@@ -99,8 +101,9 @@
                 </div>
               </div>
             </div> 
+           {% endfor %} 
     </div>
-        {% endfor %}
+    
         
 </div>
 </div>
