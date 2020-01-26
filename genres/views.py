@@ -1,15 +1,13 @@
 from django.shortcuts import render
 from .models import Genre
 from records.models import Record
-from collections import Counter
 
-# Create your views here.
+
+""" Return all Genres and the amount of records in a Genre """
 def all_genres(request ):
     genres = Genre.objects.all()
     records = Record.objects.all()
-    
     records_genres = []
- 
     
     for genre in genres:
         records_genres.append(Genre.objects.filter(record__genres=genre.id))
