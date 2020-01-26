@@ -8,7 +8,7 @@
  
 <div class="container-fluid">
   <div class="row ">
-    
+  
       <div class="card-deck mx-auto text-nowrap">
         
         {% for genre in genres %}
@@ -18,23 +18,9 @@
           
               <h6 class="card-title"><a href="{% url 'genres_records' genre.id %}" >{{ genre.name }}</a></h6>
               <small><p class="card-text">
- 
-             {% for record in records %}
       
-                {% for x in record.genres.all %}
-                  {% if x == genre %}
-                 
-                    {% with amount=forloop.counter %} 
-                    {{ amount }}
-                    {% endwith %}
-                   
-                  {% endif %}
-                   
-                {% endfor %}
-            {% endfor %}
-          
-          Records
-            
+      
+      <strong>{{genre.number}}</strong> Records
           
               
               </p></small>
