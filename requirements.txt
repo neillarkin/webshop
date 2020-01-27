@@ -83,7 +83,6 @@ serverlessrepo==0.1.9
 service-identity==16.0.0
 six==1.14.0
 sqlparse==0.3.0
-ssh-import-id==5.7
 stevedore==1.31.0
 stripe==2.41.1
 systemd-python==234
