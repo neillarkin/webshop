@@ -15,7 +15,6 @@ botocore==1.14.9
 certifi==2019.11.28
 chardet==3.0.4
 chevron==0.13.1
-Click==7.0
 command-not-found==0.3
 configobj==5.0.6
 constantly==15.1.0
