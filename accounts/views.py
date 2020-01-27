@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from records.models import Record
-# from wishlists.views import all_wishes
+from genres.models import Genre
 from wishlists.models import Wishlist
+from wishlists.forms import WishForm
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django import forms
-from wishlists.forms import WishForm
+
 
 def index(request):
     """Returns the index.html page"""
@@ -51,8 +52,9 @@ def login(request):
     else:
         """create empty object"""
         login_form = UserLoginForm()
-        
-    return render(request, 'login.html', {'login_form': login_form})
+    
+    genres = Genre.objects.all()
+    return render(request, 'login.html', {'login_form': login_form, 'genres': genres })
     """returned to Login.html template with key and value(form instance of 
     UserLoginForm class)"""
 
@@ -84,9 +86,10 @@ def registration(request):
     else:
         registration_form = UserRegistrationForm()
     
+    genres = Genre.objects.all()
     """Return template and context dictionary with object as the value"""
     return render(request, 'registration.html', {
-        "registration_form": registration_form})
+        "registration_form": registration_form, "genres": genres})
         
 
 def user_profile(request):
