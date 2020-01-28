@@ -92,18 +92,19 @@
         
     <!--</div>-->
     <div class="row">
-        <h4>
-             <small class="text-muted">{% block page_heading %}{% endblock %}</small>
+        <div >
+        <h4 class="text-muted">
+             {% block page_heading %}{% endblock %}
         </h4>
+        </div>
     </div>
 </div>
-
-
-    
 
     {% block content %}
 
     {% endblock %}
+
+
 
     <footer>
         <div class="container">

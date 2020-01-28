@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse
-
+from genres.models import Genre
 
 """Renders the cart contents page"""
 def view_cart(request):
+    genres = Genre.objects.all()
     """# no Dict returned here because context.py (cart_cotents) is global"""
-    return render(request, "cart.html") 
+    return render(request, "cart.html", {"genres": genres}) 
 
 """Add record qunatity to the cart"""
 

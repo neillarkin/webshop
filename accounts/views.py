@@ -98,8 +98,8 @@ def user_profile(request):
     user = User.objects.get(email=request.user.email)
     user_id = request.user.id
     wishlist = Wishlist.objects.filter(user_id=user_id)
-    
-    return render(request, 'profile.html', {"profile": user, "wishlist": wishlist})
+    genres = Genre.objects.all()
+    return render(request, 'profile.html', {"profile": user, "wishlist": wishlist, "genres": genres})
 
 def edit_profile(request):
     user = User.objects.get(email=request.user.email)
