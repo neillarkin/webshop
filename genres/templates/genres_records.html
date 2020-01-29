@@ -8,7 +8,6 @@
 
 <div class="container-fluid">
   <div class="row ">
-   
       <div class="card-deck mx-auto ">
         
         {% for record in genres_records %}
@@ -17,7 +16,6 @@
             <div class="card-body ">
               <h5 class="card-title"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
               <h6 class="card-title">{{ record.name }}</h6>
-              <small><p class="card-text">{{ record.description }}</p></small>
               <p class="card-text">€{{ record.price }}</p>
             </div>
             <div class="card-footer">
