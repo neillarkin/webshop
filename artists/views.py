@@ -18,7 +18,7 @@ def artists_records(request, id):
     try:
         artists_records = Record.objects.get(artist__id=id)
     except Record.DoesNotExist:
-        messages.success(request, "This artist has no records in store")
+        messages.success(request, "No Records for this Artist!")
     except Record.MultipleObjectsReturned:
         artists_records
 

@@ -13,6 +13,9 @@
     
 {% for record in records %}
   <div class="col mb-4">
+        {% if not records %}
+              <p class="text-center">No Records in store!</p>
+        {% endif %}
     
         <div class="card h-100">
           <img class="card-img-top mx-auto " src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">

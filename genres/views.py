@@ -26,5 +26,7 @@ def genres_records(request, id):
         genre_record = Record.objects.get(genres__id=id)
     except Record.DoesNotExist:
         messages.success(request, "No Records in this genre!")
-
+    except Record.MultipleObjectsReturned:
+        genres_records
+    
     return render(request, "genres_records.html", {"genres": genres, "genre": genre, "genres_records": genres_records})

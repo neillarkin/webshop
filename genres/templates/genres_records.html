@@ -10,7 +10,12 @@
   <div class="row ">
       <div class="card-deck mx-auto ">
         
+        {% if not genres_records %}
+              <p class="text-center">No Records in this Genre!</p>
+        {% endif %}
+        
         {% for record in genres_records %}
+         
           <div class="card">
             <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
             <div class="card-body ">
