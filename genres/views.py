@@ -7,7 +7,7 @@ from records.models import Record
 
 """ Return all Genres and the amount of records in a Genre """
 def all_genres(request ):
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
   
     for genre in genres:
         for genre_item in Genre.objects.filter(record__genres=genre.id):
@@ -23,10 +23,18 @@ def genres_records(request, id):
     genres_records = Record.objects.filter(genres__id=id)
     
     try:
-        genre_record = Record.objects.get(genres__id=id)
+        Genre.objects.get(id=id)
     except Record.DoesNotExist:
-        messages.success(request, "No Records in this genre!")
+        messages.success(request, "Error! Genre does not exist!!")
     except Record.MultipleObjectsReturned:
-        genres_records
+        messages.success(request, "Error! Only one genre of this name should exist")
+    
+    
+    if Record.objects.filter(genres__id=id):
+        pass
+    else:
+        messages.success(request, "No records in this genre!")
+    
+
     
     return render(request, "genres_records.html", {"genres": genres, "genre": genre, "genres_records": genres_records})

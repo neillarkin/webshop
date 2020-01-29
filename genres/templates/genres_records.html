@@ -11,7 +11,7 @@
       <div class="card-deck mx-auto ">
         
         {% if not genres_records %}
-              <p class="text-center">No Records in this Genre!</p>
+              <p class="text-center font-italic text-muted">We don't have {{genre}} records in stock right now.<br> Add it to your Wishlist and we'll order it for you! </p>
         {% endif %}
         
         {% for record in genres_records %}

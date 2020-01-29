@@ -11,7 +11,7 @@
 
    <div class="card-deck mx-auto ">
     {% if not artists_records %}
-          <p class="text-center">No Records for this Artist!</p>
+          <p class="text-center font-italic text-muted">We don't have anything in stock for {{artist}}.<br> Add it to your Wishlist and we'll order it for you! </p>
     {% endif %}
   
     {% for record in artists_records %}

@@ -5,15 +5,13 @@ from genres.models import Genre
 
 """View function that returns all the records in the database """
 def all_records(request):
-    genres = Genre.objects.all()
-    records = Record.objects.all()
-    
-    try:
-        records = Record.objects.all()
-    except Record.DoesNotExist:
-        messages.success(request, "No Records in store!")
-    except Record.MultipleObjectsReturned:
-        records
+    genres = Genre.objects.all().order_by('name')
+    records = Record.objects.all().order_by('name')
+   
+    if Record.objects.all():
+        pass
+    else:
+        messages.success(request, "No Records in stock!")
     
     return render(request, "records.html",  {"records": records, "genres": genres})
 
