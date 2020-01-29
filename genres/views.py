@@ -8,14 +8,11 @@ from records.models import Record
 def all_genres(request ):
     genres = Genre.objects.all()
     records = Record.objects.all()
-    records_genres = []
     
     for genre in genres:
-        records_genres.append(Genre.objects.filter(record__genres=genre.id))
-        for record in records_genres:
-            for x in record:
-                if x == genre:
-                    genre.number += 1
+        for genre_item in Genre.objects.filter(record__genres=genre.id):
+            if genre_item == genre:
+                genre.number += 1
 
     return render(request, "genres.html",  {"genres": genres})
     
