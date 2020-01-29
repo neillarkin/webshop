@@ -102,8 +102,9 @@ def user_profile(request):
     return render(request, 'profile.html', {"profile": user, "wishlist": wishlist, "genres": genres})
 
 def edit_profile(request):
+    genres = Genre.objects.all()
     user = User.objects.get(email=request.user.email)
-    return render(request, 'edit_profile.html', {"profile": user})
+    return render(request, 'edit_profile.html', {"profile": user, "genres": genres})
     
 def update_profile(request):
     user = User.objects.get(email=request.user.email)
