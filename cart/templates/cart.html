@@ -33,7 +33,7 @@
                                 <div class="input-group">
                                  <span> <div class="input-group-addon">Qty</div>
                                     <input name="quantity" type="number" min="0" max="999" class="form-control form-control-sm" value="{{item.quantity}}">
-                                    <!--<div class="input-group-addon">{{item.quantity}}</div>-->
+                                   
                                 </span>
                                 </div>
                           
@@ -49,11 +49,27 @@
 <div class="container">
     <div class="row">
         <div class="col mx-auto">
-            <p class="float-right"><a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a></p> 
+         
             <p class="float-right mt-2 mr-1"> €{{ total }}</p> 
             <p class="float-right mt-2">Total:&nbsp;</p> 
+
          </div>
     </div>
+    <div class="row">
+        <div class="col mx-auto">
+            {% if total <= 0 %}
+              <p class="text-center">Your cart is empty!</p>
+              <p class="float-right"><a href="#" class="btn btn-secondary 
+               disabled" role="button" aria-disabled="true">Checkout</a>
+              </p>
+            {% else %}
+                <p class="float-right"><a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a></p> 
+            {% endif %}
+        </div>
+    </div>
+    
 </div>
+
+
 
 {% endblock %}

@@ -6,14 +6,15 @@
 
 {% block content %}
 
-<div class="container-fluid">
-  <div class="row ">
-    <div class="card-deck mx-auto ">
+<div class="container">
+<div class="row row-cols-1 row-cols-md-3 justify-content-center">
+    
         {% for artist in artists %}
-        <div class="card">
-        <i class="card-img-top mx-auto fas fa-user fa-9x"></i>
+       <div class="col mb-4"> 
+        <div class="card h-100 ">
+        <div class=" mx-auto"><i class="card-img-top mx-auto fas fa-user fa-9x "></i></div> 
 
-        <div class="card-body">
+        <div class="card-body  mx-auto">
           <h5 class="card-title">{{ artist.name }}</h5>
           <p class="card-text">
             
@@ -23,8 +24,9 @@
         </div>
 
         </div>
+         </div>
         {% endfor %}
-    </div>
+    
     
   </div>
 </div>

@@ -9,37 +9,33 @@
 <div class="container">
 
 <div class="row row-cols-1 row-cols-md-3">
-  
+
     
 {% for record in records %}
   <div class="col mb-4">
     
         <div class="card h-100">
-          <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
-          <div class="card-body ">
+          <img class="card-img-top mx-auto " src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+          <div class="card-body mx-auto">
             <h5 class="card-title"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
             <p class="card-text">{{ record.name }}</p>
-          
-            <small><p class="card-text">
+            <p class="card-text">
               {% for genre in record.genres.all %}
-               <a href="{% url 'genres_records' genre.id %}">  {{ genre }} </a>
+               <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre }} </small></a>
               {% endfor %}
-            </p></small>
-           
+            </p>
             <p class="card-text">€{{ record.price }}</p>
           </div>
-          <div class="card-footer">
-            <small>
+          <div class="card-footer mx-auto">
                 <form method="post" action="{% url 'add_to_cart' record.id %}">
                   {% csrf_token %}
                       <div class="input-group ">
-                           <span><input name="quantity" type="number" min="1" max="999" class="form-control form-control-sm" value="1"></span> 
+                           <span><input class="form-control form-control-sm" name="quantity" type="number" min="1" max="999"  value="1"></span> 
                           <span class="input-group-btn">
-                              <button class="btn btn-success btn-sm" type="submit"><small>Add to Cart</small></button>
+                              <button class="btn btn-success btn-sm mx-1 my-1" type="submit"><small>Add to Cart</small></button>
                           </span>
                       </div>
-                  </form>
-            </small>
+                </form>
           </div>
         </div>
     
@@ -49,7 +45,5 @@
 </div>
 </div>
    
- 
-</div>
 {% endblock %}
 

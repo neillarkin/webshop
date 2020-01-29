@@ -2,7 +2,7 @@
 
 {% block page_title %}{{artist.name}}{% endblock %} 
 
-{% block page_heading %}Records by {{artist.name}}{% endblock %} 
+{% block page_heading %}<small>Records by {{artist.name}}</small>{% endblock %} 
 
 
 {% block content %}
@@ -13,33 +13,27 @@
   
     {% for record in artists_records %}
       <div class="card">
-      <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
-       <div class="card-body ">
-         <h6 class="card-title">{{ record.name }}</h6>
-         <small><p class="card-text">{{ record.description }}</p></small>
-         <small><p class="card-text">{{ record.genre }}</a></p></small>
-         <p class="card-text">€{{ record.price }}</p>
+        <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+         <div class="card-body mx-auto">
+           <h6 class="card-title">{{ record.name }}</h6>
+           <small><p class="card-text">{{ record.genre }}</a></p></small>
+           <p class="card-text">€{{ record.price }}</p>
+         </div>
+        <div class="card-footer mx-auto">
+          <form method="post" action="{% url 'add_to_cart' record.id %}">
+            {% csrf_token %}
+              <div class="input-group ">
+                   <span><input class="form-control form-control-sm" name="quantity" type="number" min="1" max="999"  value="1"></span> 
+                  <span class="input-group-btn">
+                      <button class="btn btn-success btn-sm mx-1 my-1" type="submit">Add to Cart</button>
+                  </span>
+              </div>
+           </form>
        </div>
-      <div class="card-footer">
-       <small>
-           <form method="post" action="{% url 'add_to_cart' record.id %}">
-             {% csrf_token %}
-                 <div class="input-group ">
-                      <span><input name="quantity" type="number" min="1" max="999" class="form-control form-control-sm" value="1"></span> 
-                     <span class="input-group-btn">
-                         <button class="btn btn-success btn-sm" type="submit">Add to Cart</button>
-                     </span>
-                 </div>
-             </form>
-       </small>
-     </div>
-       
       </div>
      {% endfor %}
      
     </div>
-    
-    
   </div>
 </div>
 {% endblock %}

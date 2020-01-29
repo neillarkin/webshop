@@ -4,6 +4,6 @@ from genres.models import Genre
 
 """View function that returns all the records in the database """
 def all_records(request):
-    records = Record.objects.all()
     genres = Genre.objects.all()
+    records = Record.objects.all()
     return render(request, "records.html",  {"records": records, "genres": genres})

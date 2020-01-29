@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .models import Genre
 from records.models import Record
 
@@ -14,8 +15,8 @@ def all_genres(request ):
         for record in records_genres:
             for x in record:
                 if x == genre:
-                    genre.number = genre.number + 1
-        
+                    genre.number += 1
+
     return render(request, "genres.html",  {"genres": genres})
     
 """ Get a records and genre using the OneToMany relationship"""
@@ -23,4 +24,12 @@ def genres_records(request, id):
     genres = Genre.objects.all()
     genre = Genre.objects.get(id=id)
     genres_records = Record.objects.filter(genres__id=id)
+    
+    # for genre in genres_records:
+    #     if genre:
+    #         messages.success(request, "success")
+    #     if not genre:
+    #         messages.success(request, "fail")
+        
     return render(request, "genres_records.html", {"genres": genres, "genre": genre, "genres_records": genres_records})
+    
