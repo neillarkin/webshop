@@ -20,7 +20,7 @@
         <div class="card h-100">
           <img class="card-img-top mx-auto " src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
           <div class="card-body mx-auto">
-            <h5 class="card-title"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
+            <h5 class="card-title text-nowrap"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
             <p class="card-text">{{ record.name }}</p>
             <p class="card-text">
               {% for genre in record.genres.all %}
@@ -35,7 +35,7 @@
                       <div class="input-group ">
                            <span><input class="form-control form-control-sm" name="quantity" type="number" min="1" max="999"  value="1"></span> 
                           <span class="input-group-btn">
-                              <button class="btn btn-success btn-sm mx-1 my-1" type="submit"><small>Add to Cart</small></button>
+                              <button class="btn btn-success btn-sm mx-1 my-1 cart-btn rounded-0 shadow-none" type="submit"><small>Add to Cart</small></button>
                           </span>
                       </div>
                 </form>
