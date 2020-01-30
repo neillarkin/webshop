@@ -8,7 +8,8 @@
     <title>{% block page_title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">
+    <!--<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">-->
+    <link rel="stylesheet" href="/static/css/custom.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -18,11 +19,20 @@
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<header>  
+    <div class="row">
+        <div class="col-1">
+            <div id="back-button" class="float-left mt-2"> 
+                <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x text-muted "></i></a> 
+            </div>
+        </div>
+        <div class="col-11">
+             <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+   
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{% url 'index' %}">Vinyl Records</a>
+        <a class="navbar-brand mr-2" href="{% url 'index' %}">Vinyl Records</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
                 <input class="form-control mr-sm-2 col-8" type="search" name="q" placeholder="Search" aria-label="Search">
@@ -68,10 +78,11 @@
         </div>
        
     </nav>
+            
+        </div>
+    </div>
+</header>  
 
-    <div id="back-button" class="float-left"> 
-                <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x text-muted ml-3 mt-3"></i></a> 
-            </div>
     <!--If Django messages is true then display that message.
    A message is created from each of the accounts/views functions)-->
     {% if messages %}
@@ -93,44 +104,30 @@
             
             
         </div>
-        <div class="row ">
-            <!--<div class="float-left"> -->
-            <!--    <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-long-arrow-alt-left fa-2x text-muted"></i></a> -->
-            <!--</div>-->
-            
-            <div class="col-12">
-            <h4 class="text-muted">
-             
-                 {% block page_heading %}{% endblock %}
-            </h4>
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                <div class="row"> 
+                    <h4 class="page-heading text-nowrap bd-highlight mr-2 pl-3 pr-3 px-2  py-2" >
+                         {% block page_heading %}{% endblock %}
+                    </h4> 
+                </div> 
             </div>
         </div>
     </div>
+    
+    
+    
 </main>
     {% block content %}
     {% endblock %}
-    <footer>
+    
+    <hr class="mx-0 ">
+    <footer class="float-center">
         <div class="container">
-            <p class="d-flex justify-content-center">Developed by Neil Larkin © 2019 </p>
+            <p class="text-muted text-center font-italic"><small>Developed by Neil Larkin © 2019</small></p>
         </div>
     </footer>
 
-<script>
-$(document).ready(function() {
-    
-     $('.alert').alert()
-   
-  if (window.location.pathname == "/") {
-   console.log("success")
-   $('#back-button').hide();
-  }
-  else {
-   $('#back-button').show();
-  }
 
-
-})
-
-</script>
 </body>
 </html>
