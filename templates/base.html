@@ -69,7 +69,7 @@
        
     </nav>
 
-    <div class="float-left"> 
+    <div id="back-button" class="float-left"> 
                 <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x text-muted ml-3 mt-3"></i></a> 
             </div>
     <!--If Django messages is true then display that message.
@@ -114,6 +114,23 @@
             <p class="d-flex justify-content-center">Developed by Neil Larkin © 2019 </p>
         </div>
     </footer>
+
+<script>
+$(document).ready(function() {
     
+     $('.alert').alert()
+   
+  if (window.location.pathname == "/") {
+   console.log("success")
+   $('#back-button').hide();
+  }
+  else {
+   $('#back-button').show();
+  }
+
+
+})
+
+</script>
 </body>
 </html>
