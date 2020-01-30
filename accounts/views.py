@@ -53,7 +53,7 @@ def login(request):
         """create empty object"""
         login_form = UserLoginForm()
     
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     return render(request, 'login.html', {'login_form': login_form, 'genres': genres })
     """returned to Login.html template with key and value(form instance of 
     UserLoginForm class)"""
@@ -86,7 +86,7 @@ def registration(request):
     else:
         registration_form = UserRegistrationForm()
     
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     """Return template and context dictionary with object as the value"""
     return render(request, 'registration.html', {
         "registration_form": registration_form, "genres": genres})
@@ -98,11 +98,11 @@ def user_profile(request):
     user = User.objects.get(email=request.user.email)
     user_id = request.user.id
     wishlist = Wishlist.objects.filter(user_id=user_id)
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     return render(request, 'profile.html', {"profile": user, "wishlist": wishlist, "genres": genres})
 
 def edit_profile(request):
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     user = User.objects.get(email=request.user.email)
     return render(request, 'edit_profile.html', {"profile": user, "genres": genres})
     

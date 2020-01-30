@@ -8,18 +8,18 @@
 
 <div class="container">
 <div class="row row-cols-1 row-cols-md-3 justify-content-center">
-    
+      
         {% for artist in artists %}
        <div class="col mb-4"> 
         <div class="card h-100 ">
-        <div class=" mx-auto"><i class="card-img-top mx-auto fas fa-user fa-9x "></i></div> 
+        <div class=" mx-auto"><i class="card-img-top mx-auto my-2 fas fa-user fa-6x "></i></div> 
 
         <div class="card-body  mx-auto">
           <h5 class="card-title">{{ artist.name }}</h5>
           <p class="card-text">
             
             <a href="{% url 'artists_records' artist.id %}"> Artists Records</a>
-     
+             {{number}}
           </p>
         </div>
 

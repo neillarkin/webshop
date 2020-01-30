@@ -18,7 +18,7 @@ def all_genres(request ):
     
 """ Get a records and genre using the OneToMany relationship"""
 def genres_records(request, id):
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     genre = Genre.objects.get(id=id)
     genres_records = Record.objects.filter(genres__id=id)
     

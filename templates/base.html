@@ -37,6 +37,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'genres' %}">All</a>
+                         <div class="dropdown-divider"></div>
                         {% for genre in genres %}
                             <a class="dropdown-item" href="{% url 'genres_records' genre.id %}">{{ genre.name }}</a>
                          {% endfor %}
@@ -68,7 +69,9 @@
        
     </nav>
 
-
+    <div class="float-left"> 
+                <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x text-muted ml-3 mt-3"></i></a> 
+            </div>
     <!--If Django messages is true then display that message.
    A message is created from each of the accounts/views functions)-->
     {% if messages %}
@@ -83,13 +86,21 @@
     
     <main class="my-4">
     <div class="container">
-        <!--<div class="row">-->
-        <!--    <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-long-arrow-alt-left fa-3x"></i></a>-->
-            
-        <!--</div>-->
         <div class="row">
-            <div >
+            <!--<div> -->
+            <!--    <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-long-arrow-alt-left fa-3x"></i></a> -->
+            <!--</div>-->
+            
+            
+        </div>
+        <div class="row ">
+            <!--<div class="float-left"> -->
+            <!--    <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-long-arrow-alt-left fa-2x text-muted"></i></a> -->
+            <!--</div>-->
+            
+            <div class="col-12">
             <h4 class="text-muted">
+             
                  {% block page_heading %}{% endblock %}
             </h4>
             </div>

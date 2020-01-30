@@ -24,7 +24,7 @@
             <p class="card-text">{{ record.name }}</p>
             <p class="card-text">
               {% for genre in record.genres.all %}
-               <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre }} </small></a>
+               <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre|join:", " }}</small></a>
               {% endfor %}
             </p>
             <p class="card-text">€{{ record.price }}</p>

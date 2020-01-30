@@ -3,7 +3,7 @@ from genres.models import Genre
 
 """Renders the cart contents page"""
 def view_cart(request):
-    genres = Genre.objects.all()
+    genres = Genre.objects.all().order_by('name')
     """# no Dict returned here because context.py (cart_cotents) is global"""
     return render(request, "cart.html", {"genres": genres}) 
 
