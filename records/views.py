@@ -14,5 +14,3 @@ def all_records(request):
         messages.success(request, "No Records in stock!")
     
     return render(request, "records.html",  {"records": records, "genres": genres})
-
-

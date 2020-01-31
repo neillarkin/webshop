@@ -1,42 +1,43 @@
-{% extends 'base.html' %}
-
-{% block page_title %}Artists{% endblock %} 
-
-{% block page_heading %}Artists{% endblock %} 
-
-{% block content %}
+{% extends 'base.html' %} {% block page_title %}Artists{% endblock %} {% block page_heading %}Artists{% endblock %} {% block content %}
 
 <div class="container">
-<div class="row row-cols-1 row-cols-md-3 justify-content-center">
-      
+    <div class="row row-cols-1 row-cols-md-3 justify-content-center">
+
     {% for artist in artists %}
-          
-       <div class="col mb-4"> 
-        <div class="card h-100 ">
-        <div class=" mx-auto"><i class="card-img-top mx-auto my-2 fas fa-user fa-6x "></i></div> 
 
-        <div class="card-body  mx-auto">
-         <h5 class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">{{ artist.name }}</a></h5>
+    <div class="col mb-4">
+            <div class="card h-100 ">
+                <div class=" mx-auto"><i class="card-img-top mx-auto my-2 
+                fas fa-user fa-6x "></i></div>
 
-          <p class="card-text">
-            <!--<h6 class="text-center text-nowrap">{{ artist.number }} Records</h6>-->
-          <div class="text-center text-nowrap">
-            <span class="badge badge-secondary genre-badge font-weight-light">{{artist.number}}&nbsp;&nbsp;Records</span>
+                <div class="card-body  mx-auto">
+                    <h5 class="card-title title-block text-nowrap text-center 
+                    bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">{{ artist.name }}
+                    </h5>
+
+                    <p class="card-text">
+                        <div class="text-center text-nowrap">
+                            <span class="badge badge-secondary genre-badge 
+                            font-weight-light">{{artist.number}}&nbsp;&nbsp;
+                            Records</span>
+                        </div>
+                    </p>
+
+                    <p class="card-text">
+                        <a href="{% url 'artists_records' artist.id %}">
+                            <p class="text-center text-nowrap">
+                                <small>See all Releases </small>
+                            </p>
+                        </a>
+                    </p>
+
+                </div>
+
             </div>
-          </p>
-  
-          <p class="card-text">
-             <a href="{% url 'artists_records' artist.id %}"><p class="text-center text-nowrap"> <small>See all Releases </small></p></a>
-            </p>
-          
         </div>
-
-        </div>
-         </div>
-      {% endfor %}
-    
-    
-  </div>
+        
+    {% endfor %}
+    </div>
 </div>
 
 {% endblock %}

@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-
+""" Wishlist class has a Foregin Key of User for a One-To-Many relationsip"""
 class Wishlist(models.Model):
     artist_name = models.CharField(max_length=254, default='')
     record_name = models.CharField(max_length=254, default='')

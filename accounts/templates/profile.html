@@ -1,114 +1,125 @@
-{% extends 'base.html' %} 
-
-{% block page_title %}{{ user }}'s Profile{% endblock %} 
-
-{% block page_heading %}Profile{% endblock %} 
-
-{% block content %}
+{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}Profile{% endblock %} {% block content %}
 <div class="container">
-<div class="row">
-        
-  <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title"><span class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">{{ user|title }}'s Profile</span>
+  <div class="row">
 
-             <div class="card-text"> <i class="fas fa-user fa-4x mb-3 mt-3 px-3 py-3 border"></i></div>
-             
-            <form method="post" action="{% url 'edit_profile' %}">
-                {% csrf_token %}
-                <h6 class="card-title">Username: <span class="text-muted"><a href="{% url 'edit_profile' %}">{{ user }}</a></span></h6>
-                <h6  class="card-text">Email: <span class="text-muted"><a href="{% url 'edit_profile' %}">{{ profile.email }}</a></span></h6>
-                <!--<button class="btn btn-secondary mt-1 btn-sm float-right mb-0 mt-n5">Edit</button>-->
-            </form>
-            
-          
-             <div class="card-footer py-4">
-              <p class="float-right "><a href="{% url 'password_reset' %}">Reset Password</a></p>
-           </div>
-           
-            
-          </div>
-        </div> 
-     </div>
-    
-    
-<div class="col-sm-6">
+    <div class="col-sm-6">
       <div class="card">
-          
         <div class="card-body">
-          <h6 class="card-title"><span class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">My Wishlist </span>
-          
+          <h6 class="card-title">
+            <span class="card-title title-block text-nowrap text-center 
+            bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">{{ user|title }}'s Profile</span>
+          </h6>
+
+          <div class="card-text">
+            <i class="fas fa-user fa-4x mb-3 mt-3 px-3 py-3 border"></i></div>
+
+          <form method="post" action="{% url 'edit_profile' %}">
+            {% csrf_token %}
+            <h6 class="card-title">Username: <span class="text-muted">
+              <a href="{% url 'edit_profile' %}">{{ user }}</a></span>
+            </h6>
+            <h6 class="card-text">Email: <span class="text-muted">
+              <a href="{% url 'edit_profile' %}">{{ profile.email }}</a></span>
+              </h6>
+          </form>
+
+          <div class="card-footer py-4">
+            <p class="float-right">
+              <a href="{% url 'password_reset' %}">Reset Password</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">
+            <span class="card-title title-block text-nowrap text-center 
+            bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">My Wishlist </span>
+
             <span class="text-muted"> 
-            <a  class="float-right" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
-              <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add a new wish!"></i>
+            <a  class="float-right" data-toggle="collapse" href="#collapse" 
+            role="button" aria-expanded="false" aria-controls="collapse">
+              <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" 
+              title="Add a new wish!"></i>
             </a>
          </span>
-         </h6>
+          </h6>
           <div class="collapse" id="collapse">
             <form method="post" action="{% url 'add_wish' %}">
-                {% csrf_token %}
-               <div class="form-group ">
+              {% csrf_token %}
+              <div class="form-group ">
                 <label for="formGroupInput">Artist</label>
-                <input name="artist_name" type="text" class="form-control" id="formGroupInput"  value="">
+                <input name="artist_name" type="text" class="form-control" 
+                id="formGroupInput" value="">
               </div>
               <div class="form-group">
                 <label for="formGroupInput2">Track</label>
-                <input name = "record_name" type="text" class="form-control" id="formGroupInput2" placeholder="">
+                <input name="record_name" type="text" class="form-control" 
+                id="formGroupInput2" placeholder="">
               </div>
-             <button class="btn btn-primary rounded-0 shadow-none" type="submit"  data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">Submit</button>
-          </form>
+              <button class="btn btn-primary btn-sm rounded-0 shadow-none" 
+              type="submit" data-toggle="collapse" data-target="#collapse" 
+              aria-expanded="false" aria-controls="collapse">Submit</button>
+            </form>
           </div>
-            
-        <div class="card-footer">
-              
-          {% if not wishlist %}
-            <p class="text-left font-italic text-muted"><small>Add Records to your wishlist and we'll contact you when they are in stock!</small></p>
-          {% endif %}
-          
-          {% for wish in wishlist %}
-          {% csrf_token %}
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}"><small> {{ wish.artist_name}}</small></a></h6>
-                    <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
-                  </div>
-                  <span class="text-muted">&nbsp;&nbsp;<a href="#" data-toggle="tooltip" data-placement="top" title="Delete a wish!!" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#mymodal{{wish.id}}"  data-toggle="tooltip" data-placement="top" title="Delete a wish!"></i> </a></span>
-                </li>                                                
-            </ul>
-          {% endfor %}
-          
-      </div>
 
-          
-        </div>
-      
-      </div>
-  </div>
-    
-  <div class="col-sm-6">
-          {% for wish in wishlist %}
-           <div class="modal fade" id="mymodal{{wish.id}}" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    Do you want to remove <strong>{{ wish.record_name }} </strong> from your wishlist?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-                    <a href = "{% url 'remove_wish' wish.id %}" class="btn btn-danger btn-sm">Delete</a>
-                  </div>
+          <div class="card-footer">
+
+            {% if not wishlist %}
+            <p class="text-left font-italic text-muted">
+              <small>Add Records to your wishlist and we'll contact you when they are in stock!</small></p>
+            {% endif %} {% for wish in wishlist %} {% csrf_token %}
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 name="artist_name" class="my-0">
+                    <a href="{% url 'edit_wish' wish.id %}">
+                      <small> {{ wish.artist_name}}</small></a></h6>
+                  <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                 </div>
-              </div>
-            </div> 
-           {% endfor %} 
+                <span class="text-muted">&nbsp;&nbsp;
+                <a href="#" data-toggle="tooltip" data-placement="top" 
+                title="Delete a wish!!" >
+                  <i class="fas fa-trash-alt btn" data-toggle="modal" 
+                  data-target="#mymodal{{wish.id}}"  data-toggle="tooltip" 
+                  data-placement="top" title="Delete a wish!"></i> </a></span>
+              </li>
+            </ul>
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
     </div>
-    
-        
-</div>
+
+    <div class="col-sm-6">
+      {% for wish in wishlist %}
+      <div class="modal fade" id="mymodal{{wish.id}}" tabindex="-1" role="dialog" 
+      aria-labelledby="MyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+            Do you want to remove<strong>{{ wish.record_name }}</strong> from your wishlist?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm" 
+              data-dismiss="modal">Cancel</button>
+              <a href="{% url 'remove_wish' wish.id %}" 
+              class="btn btn-danger btn-sm">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
 </div>
 
 {% endblock %}
-
-

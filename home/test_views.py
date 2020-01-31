@@ -1,6 +1,8 @@
 from django.test import TestCase
 from genres.models import Genre
 
+""" Test defaut view for Home Page"""
+
 class TestViews(TestCase):
 
     def test_get_home_page(self):

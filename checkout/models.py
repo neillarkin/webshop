@@ -13,18 +13,18 @@ class Order(models.Model):
     county = models.CharField(max_length=40, blank=False)
     date = models.DateField()
 
-    """ Return a string summary of the order with ID, date and user name"""
+    # Return a string summary of the order with ID, date and user name"
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
 
 
-"""Represents the ordered item, the user and the quantity """
+    # Represents the ordered item, the user and the quantity 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=False) #FK to Order class (above)
     record = models.ForeignKey(Record, on_delete=models.CASCADE, null=False) #FK to Record instance)
     quantity = models.IntegerField(blank=False) 
 
-    """ Return instance details as a string"""
+    # Return instance details as a string
     def __str__(self):
         return "{0} {1} @ {2}".format(
             self.quantity, self.record.name, self.record.price)

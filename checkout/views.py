@@ -8,28 +8,28 @@ from django.utils import timezone
 from records.models import Record
 import stripe
 
-# Create your views here.
+
 stripe.api_key = settings.STRIPE_SECRET
 
-
+""" View that validates Checkout form and passes it to Stripe """
 @login_required()  # user must be logged in to make a paymnet
 def checkout(request):
     if request.method == "POST":
-        """user is first shown the order & payment forms"""
+    #user is first shown the order & payment forms
         order_form = OrderForm(request.POST) 
         payment_form = MakePaymentForm(request.POST)
         
-        """Validate both forms then save the order form with timestamp"""
+    #Validate both forms then save the order form with timestamp
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
             
-            """Get user records purchased from current cart session"""
+        #Get user records purchased from current cart session
             cart = request.session.get('cart', {})
             total = 0 #initialize total to zero
             
-            """Loop through cart with ID and quantity"""
+        #Loop through cart with ID and quantity
             for id, quantity in cart.items():
                 record = get_object_or_404(Record, pk=id) #get Record using PK
                 total += quantity * record.price  #calculate quantity and total price
@@ -40,7 +40,7 @@ def checkout(request):
                 )
                 order_line_item.save() #save details of items purchased
             
-            """Try to make a payment using Stripe API"""
+        #Try to make a payment using Stripe API
             try:
                 customer = stripe.Charge.create(
                     amount=int(total * 100), #Stripe uses cents not euros
@@ -64,4 +64,5 @@ def checkout(request):
         payment_form = MakePaymentForm() #return blank forms
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {"order_form": order_form, 
+    "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})

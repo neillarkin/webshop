@@ -21,8 +21,11 @@ def all_artists(request):
             if artist.id == record.artist_id:
                 artist.number +=1 
     
-    return render(request, "artists.html", {"artists": artists, "genres": genres, "records":records, "number":number})
+    return render(request, "artists.html", {"artists": artists, 
+    "genres": genres, "records":records, "number":number})
     
+""" View function that returns Records for an specific Artist"""
+# It uses a One-To-Many Relationship with an Artist Foregin Key on the Records class
 def artists_records(request, id):
     genres = Genre.objects.all().order_by('name')
     artist = Artist.objects.get(id=id)
@@ -38,4 +41,5 @@ def artists_records(request, id):
     else:
         messages.success(request, "No Records for this Artist!")
 
-    return render(request, "artists_records.html", {"genres": genres, "artist": artist, "artists_records": artists_records})
+    return render(request, "artists_records.html", {"genres": genres, 
+    "artist": artist, "artists_records": artists_records})

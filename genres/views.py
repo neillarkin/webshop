@@ -14,7 +14,6 @@ def all_genres(request ):
     else:
         messages.success(request, "Error! There are no Genres!")
   
-  
     for genre in genres:
         for genre_item in Genre.objects.filter(record__genres=genre.id):
             if genre_item == genre:
@@ -35,12 +34,10 @@ def genres_records(request, id):
     except Record.MultipleObjectsReturned:
         messages.success(request, "Error! Only one genre of this name should exist")
     
-    
     if Record.objects.filter(genres__id=id):
         pass
     else:
         messages.success(request, "No records in this genre!")
-    
 
-    
-    return render(request, "genres_records.html", {"genres": genres, "genre": genre, "genres_records": genres_records})
+    return render(request, "genres_records.html", {"genres": genres, 
+    "genre": genre, "genres_records": genres_records})

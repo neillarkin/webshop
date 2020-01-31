@@ -11,38 +11,40 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3">
-
-            {% for item in cart_items %}
-         <div class="col-sm-12 col-md-3 mb-5 my-5">   
+        {% for item in cart_items %}
+        <div class="col-sm-12 col-md-3 mb-5 my-5">   
             <div class="card h-100">
-                <img class="card-img-top mx-auto mt-n5" src="{{ MEDIA_URL }}{{ item.record.image }}" alt="Card image cap">
+                <img class="card-img-top mx-auto mt-n5" 
+                src="{{ MEDIA_URL }}{{ item.record.image }}" 
+                alt="Card image cap">
         
                 <div class="card-body mx-auto">
-                    <h6 class="card-title text-normal  ">{{ item.record.artist }}</h6>
-                    <h6 class="card-title text-muted font-italic"><small>"{{ item.record.name }}"</small></h6>
+                    <h6 class="card-title text-normal">{{ item.record.artist }}</h6>
+                    <h6 class="card-title text-muted font-italic">
+                        <small>"{{ item.record.name }}"</small></h6>
                     <p class="card-text"><small>€{{ item.record.price }}</small></p>
-                 </div>   
+                </div>   
                  
-                  <div class="card-footer  my-5">
-                      
-                        <form method="post" action="{% url 'adjust_cart' item.id %}">
-                            {% csrf_token %}
-                                <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                                <div class="input-group flex-nowrap">
-                                 <span> 
-                                 <div class="input-group-addon"></div>
-                                <input name="quantity" type="number" min="0" max="999" class="form-control form-control-sm" value="{{item.quantity}}">
-                                 </span>
-                                 <span> <button type="submit" class="btn btn-primary btn-sm ml-1 rounded-0 shadow-none btn-ammend text-nowrap">Amend</button>
-                                      </span>
-                                </div>
-                        </form>
-                       
-                    </div>
+                <div class="card-footer  my-5">
+                    <form method="post" action="{% url 'adjust_cart' item.id %}">
+                        {% csrf_token %}
+                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                        <div class="input-group flex-nowrap">
+                         <span> 
+                         <div class="input-group-addon"></div>
+                        <input name="quantity" type="number" min="0" max="999" 
+                        class="form-control form-control-sm" value="{{item.quantity}}">
+                         </span>
+                         <span> <button type="submit" 
+                         class="btn btn-primary btn-sm ml-1 rounded-0 shadow-none 
+                         btn-ammend text-nowrap">Amend</button>
+                        </span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-            {% endfor %}
-            
+        {% endfor %}
     </div>
 </div> 
 <div class="container">
@@ -62,7 +64,8 @@
                disabled" role="button" aria-disabled="true">Checkout</a>
               </p>
             {% else %}
-                <p class="float-right"><a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a></p> 
+                <p class="float-right"><a href="{% url 'checkout' %}" 
+                class="btn btn-success" role="button">Checkout</a></p> 
             {% endif %}
         </div>
     </div>

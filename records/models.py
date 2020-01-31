@@ -12,6 +12,6 @@ class Record(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, default='0')
     genres = models.ManyToManyField(Genre)
     
-    """ This function returns the name of a record as a string"""
+    #This function returns the name of a record as a string
     def __str__(self):
         return self.name

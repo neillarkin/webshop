@@ -12,25 +12,26 @@
 <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-         <i class="fas fa-user fa-9x mb-3"></i>
+         <i class="fas fa-user fa-9x mb-3" ></i>
          
         <form method="post" action="{% url 'update_profile' %}">
             {% csrf_token %}
-            <h6 class="card-title">Name:  <input name="username" type="text" value="{{user}}" class="mt-2"></h6>
-            <h6  class="card-text">Email:  <input name="email" type="text" value="{{ profile.email }}" class="mb-4"></h6>
+            <h6 class="card-title">Name:  <input name="username" type="text" 
+            value="{{user}}" class="mt-2"></h6>
+            <h6  class="card-text">Email:  <input name="email" type="text" 
+            value="{{ profile.email }}" class="mb-4"></h6>
             <div class="card-footer"> 
-            <button type="submit" class="btn btn-primary btn-sm float-right ml-1">Update</button>
-            <a type="reset" href="{% url 'profile' %}" class="btn btn-secondary btn-sm float-right">Cancel</a>
+            <button type="submit" class="btn btn-primary btn-sm rounded-0 
+            shadow-none float-right ml-1">Update</button>
+            <a type="reset" href="{% url 'profile' %}" class="btn btn-secondary 
+            btn-sm rounded-0 shadow-none float-right">Cancel</a>
             </div>
         </form>
         
       </div>
     </div>
  </div>
-        
-   
-
-    </div>
+</div>
 </div>
 
 {% endblock %}

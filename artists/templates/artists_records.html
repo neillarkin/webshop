@@ -7,43 +7,50 @@
 
 {% block content %}
 <div class="container">
-
-<div class="row row-cols-1 row-cols-md-3">
-    {% if not artists_records %}
-          <p class="text-center font-italic text-muted col-sm-12 col-md-8">We don't have anything in stock for <strong>{{artist}}</strong>.<br> Add it to your Wishlist and we'll order it for you! </p>
-    {% endif %}
+  <div class="row row-cols-1 row-cols-md-3">
     
-{% for record in artists_records %}
-  <div class="col-sm-12 col-md-3 mb-5 my-5">
+    {% if not artists_records %}
+      <p class="text-center font-italic text-muted col-sm-12 col-md-8">
+        We don't have anything in stock for <strong>{{artist}}</strong>.<br> 
+        Add it to your Wishlist and we'll order it for you! </p>
+    {% endif %}
+      
+    {% for record in artists_records %}
+      <div class="col-sm-12 col-md-3 mb-5 my-5">
         <div class="card h-100">
-          <img class="card-img-top mx-auto mt-n5" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+          <img class="card-img-top mx-auto mt-n5" 
+          src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
           <div class="card-body mx-auto">
             <p class="card-text mt-n5">{{ record.name }}</p>
             <p class="card-text">
               {% for genre in record.genres.all %}
-               <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre|join:", " }}</small></a>
+                 <a href="{% url 'genres_records' genre.id %}"> 
+                 <small> {{ genre|join:", " }}</small></a>
               {% endfor %}
             </p>
             <p class="card-text">€{{ record.price }}</p>
           </div>
           <div class="card-footer">
-                <form method="post" action="{% url 'add_to_cart' record.id %}">
-                  {% csrf_token %}
-                      <div class="input-group flex-nowrap">
-                           <span>
-                             <input class="form-control form-control-sm" name="quantity" type="number" min="1" max="999"  value="1">
-                             </span> 
-                          <span class="input-group-btn">
-                              <button class="btn btn-success btn-sm mx-1 my-1 rounded-0 shadow-none" type="submit"><small class="text-nowrap">Add to Cart</small></button>
-                          </span>
-                      </div>
-                </form>
+            <form method="post" action="{% url 'add_to_cart' record.id %}">
+              {% csrf_token %}
+              <div class="input-group flex-nowrap">
+                 <span>
+                   <input class="form-control form-control-sm" name="quantity" 
+                   type="number" min="1" max="999"  value="1">
+                 </span> 
+                <span class="input-group-btn">
+                    <button class="btn btn-success btn-sm mx-1 my-1 rounded-0 
+                    shadow-none" type="submit">
+                      <small class="text-nowrap">Add to Cart</small>
+                    </button>
+                </span>
+              </div>
+            </form>
           </div>
         </div>
-    
-    </div>
-{% endfor %}
-
-</div>
+      </div>
+    {% endfor %}
+  
+  </div>
 </div>
 {% endblock %}

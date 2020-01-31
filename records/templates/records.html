@@ -7,45 +7,54 @@
 {% block content %}
 
 <div class="container">
-
 <div class="row row-cols-1 row-cols-md-3">
 
     
-{% for record in records %}
-  <div class="col mb-5 my-5">
-        {% if not records %}
-              <p class="text-center">No Records in store!</p>
-        {% endif %}
-    
-        <div class="card h-100">
-          <img class="card-img-top mx-auto mt-n5" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
-          <div class="card-body mx-auto">
-            <h5 class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2  py-2"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
-            <p class="card-text text-center">{{ record.name }}</p>
-            <p class="card-text text-center">
-              {% for genre in record.genres.all %}
-               <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre|join:", " }}</small></a>
-              {% endfor %}
-            </p>
-            <p class="card-text text-center">€{{ record.price }}</p>
-          </div>
-          <div class="card-footer ">
-                <form method="post" action="{% url 'add_to_cart' record.id %}">
-                  {% csrf_token %}
-                      <div class="input-group flex-nowrap">
-                           <span>
-                             <input class="form-control form-control-sm" name="quantity" type="number" min="1" max="999"  value="1">
-                             </span> 
-                          <span class="input-group-btn">
-                              <button class="btn btn-success btn-sm mx-1 my-1 rounded-0 shadow-none" type="submit"><small class="text-nowrap">Add to Cart</small></button>
-                          </span>
-                      </div>
-                </form>
-          </div>
+  {% for record in records %}
+    <div class="col mb-5 my-5">
+      {% if not records %}
+        <p class="text-center">No Records in store!</p>
+      {% endif %}
+      
+      <div class="card h-100">
+        <img class="card-img-top mx-auto mt-n5" 
+        src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
+        
+        <div class="card-body mx-auto">
+          
+          <h5 class="card-title title-block text-nowrap text-center 
+          bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">
+            <a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a>
+          </h5>
+          
+          <p class="card-text text-center">{{ record.name }}</p>
+          <p class="card-text text-center">
+            {% for genre in record.genres.all %}
+             <a href="{% url 'genres_records' genre.id %}">
+              <small>{{ genre|join:", " }}</small></a>
+            {% endfor %}
+          </p>
+          <p class="card-text text-center">€{{ record.price }}</p>
         </div>
-    
+        
+        <div class="card-footer ">
+          <form method="post" action="{% url 'add_to_cart' record.id %}">
+            {% csrf_token %}
+              <div class="input-group flex-nowrap">
+               <span>
+                  <input class="form-control form-control-sm" name="quantity" 
+                  type="number" min="1" max="999"  value="1">
+                </span> 
+                <span class="input-group-btn">
+                  <button class="btn btn-success btn-sm mx-1 my-1 rounded-0 shadow-none" 
+                  type="submit"><small class="text-nowrap">Add to Cart</small></button>
+                </span>
+              </div>
+          </form>
+        </div>
+      </div>
     </div>
-{% endfor %}
+  {% endfor %}
 
 </div>
 </div>

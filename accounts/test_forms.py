@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .forms import UserLoginForm, UserRegistrationForm
 
+""" Test to verify the forms are validating correctly """
 class TestUserLoginForm(TestCase):
     
     def test_login_form(self):

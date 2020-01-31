@@ -5,10 +5,10 @@ from accounts import url_reset
 
 
 """URL Patterns route URLs to Views"""
-"""Each URLPattern line contians three paremeters: 
-    the actual URL, 
-    the view function, 
-    and the name for that function for referencing in templates expressions"""
+#Each URLPattern line contians three paremeters: 
+    #the actual URL, 
+    #the view function, 
+    #and the name for that function for referencing in templates expressions
 urlpatterns = [
     url(r'^logout/', logout, name="logout"),
     url(r'^login/', login, name="login"),
