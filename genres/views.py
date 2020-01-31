@@ -8,6 +8,12 @@ from records.models import Record
 """ Return all Genres and the amount of records in a Genre """
 def all_genres(request ):
     genres = Genre.objects.all().order_by('name')
+    
+    if Genre.objects.all():
+        pass
+    else:
+        messages.success(request, "Error! There are no Genres!")
+  
   
     for genre in genres:
         for genre_item in Genre.objects.filter(record__genres=genre.id):

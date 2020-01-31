@@ -21,15 +21,15 @@
           <img class="card-img-top mx-auto mt-n5" src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
           <div class="card-body mx-auto">
             <h5 class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2  py-2"><a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a></h5>
-            <p class="card-text">{{ record.name }}</p>
-            <p class="card-text">
+            <p class="card-text text-center">{{ record.name }}</p>
+            <p class="card-text text-center">
               {% for genre in record.genres.all %}
                <a href="{% url 'genres_records' genre.id %}"> <small> {{ genre|join:", " }}</small></a>
               {% endfor %}
             </p>
-            <p class="card-text">€{{ record.price }}</p>
+            <p class="card-text text-center">€{{ record.price }}</p>
           </div>
-          <div class="card-footer">
+          <div class="card-footer ">
                 <form method="post" action="{% url 'add_to_cart' record.id %}">
                   {% csrf_token %}
                       <div class="input-group flex-nowrap">

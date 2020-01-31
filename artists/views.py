@@ -6,9 +6,22 @@ from genres.models import Genre
 
 """View function that returns all the records in the database """
 def all_artists(request):
+    records = Record.objects.all()
     artists = Artist.objects.all().order_by('name')
     genres = Genre.objects.all().order_by('name')
-    return render(request, "artists.html", {"artists": artists, "genres": genres})
+    number = 0
+    
+    if Artist.objects.all():
+        pass
+    else:
+        messages.success(request, "Error! There are no Artists!")
+    
+    for artist in artists:
+        for record in records:
+            if artist.id == record.artist_id:
+                artist.number +=1 
+    
+    return render(request, "artists.html", {"artists": artists, "genres": genres, "records":records, "number":number})
     
 def artists_records(request, id):
     genres = Genre.objects.all().order_by('name')

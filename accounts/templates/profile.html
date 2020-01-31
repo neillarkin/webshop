@@ -2,7 +2,7 @@
 
 {% block page_title %}{{ user }}'s Profile{% endblock %} 
 
-{% block page_heading %}{{ user|title }}'s Profile{% endblock %} 
+{% block page_heading %}Profile{% endblock %} 
 
 {% block content %}
 <div class="container">
@@ -11,13 +11,15 @@
   <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-             <i class="fas fa-user fa-4x mb-3 px-3 py-3 border"></i>
+            <h6 class="card-title"><span class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">{{ user|title }}'s Profile</span>
+
+             <div class="card-text"> <i class="fas fa-user fa-4x mb-3 mt-3 px-3 py-3 border"></i></div>
              
             <form method="post" action="{% url 'edit_profile' %}">
                 {% csrf_token %}
                 <h6 class="card-title">Username: <span class="text-muted"><a href="{% url 'edit_profile' %}">{{ user }}</a></span></h6>
                 <h6  class="card-text">Email: <span class="text-muted"><a href="{% url 'edit_profile' %}">{{ profile.email }}</a></span></h6>
-                <!--<button class="btn btn-secondary mt-1 btn-sm">Edit</button>-->
+                <!--<button class="btn btn-secondary mt-1 btn-sm float-right mb-0 mt-n5">Edit</button>-->
             </form>
             
           
@@ -39,7 +41,7 @@
           
             <span class="text-muted"> 
             <a  class="float-right" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
-              Add a record
+              <i class="fas fa-plus" data-toggle="tooltip" data-placement="top" title="Add a new wish!"></i>
             </a>
          </span>
          </h6>
@@ -72,8 +74,8 @@
                     <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}"><small> {{ wish.artist_name}}</small></a></h6>
                     <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
                   </div>
-                  <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#mymodal{{wish.id}}"></i> </a></span>
-                </li>
+                  <span class="text-muted">&nbsp;&nbsp;<a href="#" data-toggle="tooltip" data-placement="top" title="Delete a wish!!" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#mymodal{{wish.id}}"  data-toggle="tooltip" data-placement="top" title="Delete a wish!"></i> </a></span>
+                </li>                                                
             </ul>
           {% endfor %}
           
