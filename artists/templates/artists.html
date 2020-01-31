@@ -15,10 +15,11 @@
         <div class=" mx-auto"><i class="card-img-top mx-auto my-2 fas fa-user fa-6x "></i></div> 
 
         <div class="card-body  mx-auto">
-          <h5 class="card-title">{{ artist.name }}</h5>
+         <h5 class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">{{ artist.name }}</a></h5>
+
           <p class="card-text">
             
-            <a href="{% url 'artists_records' artist.id %}"> Artists Records</a>
+            <a href="{% url 'artists_records' artist.id %}"><small class="text-nowrap"> See all Releases</small></a>
              {{number}}
           </p>
         </div>

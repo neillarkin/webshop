@@ -11,7 +11,7 @@
   <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-             <i class="fas fa-user fa-4x mb-3"></i>
+             <i class="fas fa-user fa-4x mb-3 px-3 py-3 border"></i>
              
             <form method="post" action="{% url 'edit_profile' %}">
                 {% csrf_token %}
@@ -21,8 +21,8 @@
             </form>
             
           
-             <div class="card-footer">
-              <p class="float-right mb-2"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+             <div class="card-footer py-4">
+              <p class="float-right "><a href="{% url 'password_reset' %}">Reset Password</a></p>
            </div>
            
             
@@ -31,60 +31,59 @@
      </div>
     
     
-  <div class="col-sm-6">
-        <div class="card">
-            
-          <div class="card-body">
-            <h6 class="card-title">My Wishlist <span class="text-muted"> 
-              <a  class="float-right" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
-                Add a record
-              </a>
-           </span></h6>
-            <div class="collapse" id="collapse">
-              <form method="post" action="{% url 'add_wish' %}">
-                  {% csrf_token %}
-                 <div class="form-group ">
-                  <label for="formGroupInput">Artist</label>
-                  <input name="artist_name" type="text" class="form-control" 
-                  d="formGroupInput"  value="">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupInput2">Track</label>
-                  <input name = "record_name" type="text" class="form-control" 
-                  id="formGroupInput2" placeholder="">
-                </div>
-               <button class="btn btn-primary" type="submit" 
-               data-toggle="collapse" data-target="#collapse" aria-expanded="false" 
-               aria-controls="collapse">Submit</button>
-            </form>
-            </div>
-              
-          <div class="card-footer">
-            <small>    
-            {% if not wishlist %}
-              <p class="text-left font-italic text-muted">Add Records to your wishlist and we'll contact you when they are in stock!</p>
-            {% endif %}
-            
-            {% for wish in wishlist %}
-            {% csrf_token %}
-              <ul class="list-group mb-3">
-                  <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                      <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}">{{ wish.artist_name}}</a></h6>
-                      <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
-                    </div>
-                    <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#mymodal{{wish.id}}"></i> </a></span>
-                  </li>
-              </ul>
-            {% endfor %}
-            </small>
-        </div>
-
-            
+<div class="col-sm-6">
+      <div class="card">
+          
+        <div class="card-body">
+          <h6 class="card-title"><span class="card-title title-block text-nowrap text-center bd-highlight mt-n5 pl-3 pr-3 px-2 py-2">My Wishlist </span>
+          
+            <span class="text-muted"> 
+            <a  class="float-right" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
+              Add a record
+            </a>
+         </span>
+         </h6>
+          <div class="collapse" id="collapse">
+            <form method="post" action="{% url 'add_wish' %}">
+                {% csrf_token %}
+               <div class="form-group ">
+                <label for="formGroupInput">Artist</label>
+                <input name="artist_name" type="text" class="form-control" id="formGroupInput"  value="">
+              </div>
+              <div class="form-group">
+                <label for="formGroupInput2">Track</label>
+                <input name = "record_name" type="text" class="form-control" id="formGroupInput2" placeholder="">
+              </div>
+             <button class="btn btn-primary rounded-0 shadow-none" type="submit"  data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">Submit</button>
+          </form>
           </div>
-        
+            
+        <div class="card-footer">
+              
+          {% if not wishlist %}
+            <p class="text-left font-italic text-muted"><small>Add Records to your wishlist and we'll contact you when they are in stock!</small></p>
+          {% endif %}
+          
+          {% for wish in wishlist %}
+          {% csrf_token %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 name="artist_name" class="my-0"><a href="{% url 'edit_wish' wish.id %}"><small> {{ wish.artist_name}}</small></a></h6>
+                    <small name="record_name" class="text-muted">{{ wish.record_name}}</small>
+                  </div>
+                  <span class="text-muted">&nbsp;&nbsp;<a href="#" ><i class="fas fa-trash-alt btn" data-toggle="modal" data-target="#mymodal{{wish.id}}"></i> </a></span>
+                </li>
+            </ul>
+          {% endfor %}
+          
+      </div>
+
+          
         </div>
-    </div>
+      
+      </div>
+  </div>
     
   <div class="col-sm-6">
           {% for wish in wishlist %}

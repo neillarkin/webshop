@@ -8,8 +8,8 @@
     <title>{% block page_title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">
-    <!--<link rel="stylesheet" href="/static/css/custom.css" type="text/css">-->
+    <!--<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">-->
+    <link rel="stylesheet" href="/static/css/custom.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -20,14 +20,14 @@
 
 <body>
 <header>  
-    <div class="row">
-        <div class="col-1">
+    <!--<div class="row">-->
+        <!--<div class="col-1 ">-->
             <div id="back-button" class="float-left mt-3"> 
                 <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x"></i></a> 
             </div>
-        </div>
-        <div class="col-11">
-             <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <!--</div>-->
+        <!--<div class="col-11">-->
+             <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light bg-light ">
    
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,8 +79,8 @@
        
     </nav>
             
-        </div>
-    </div>
+        <!--</div>-->
+    <!--</div>-->
      <hr class="mx-0 my-0 ">
 </header>  
 

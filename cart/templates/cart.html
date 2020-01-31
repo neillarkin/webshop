@@ -9,41 +9,40 @@
 {% block content %}
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="card-deck mx-auto ">
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+
             {% for item in cart_items %}
-            
-            <div class="card mb-3">
-                
-                <img class="card-img-top mx-auto" src="{{ MEDIA_URL }}{{ item.record.image }}" alt="Card image cap">
+         <div class="col-sm-12 col-md-3 mb-5 my-5">   
+            <div class="card h-100">
+                <img class="card-img-top mx-auto mt-n5" src="{{ MEDIA_URL }}{{ item.record.image }}" alt="Card image cap">
         
-                <div class="card-body">
-                    <h6 class="card-title text-normal ">{{ item.record.name }}</h6>
-                    <p class="card-text text-muted"><small>{{ item.record.description }}</small></p>
+                <div class="card-body mx-auto">
+                    <h6 class="card-title text-normal  ">{{ item.record.artist }}</h6>
+                    <h6 class="card-title text-muted font-italic"><small>"{{ item.record.name }}"</small></h6>
                     <p class="card-text"><small>€{{ item.record.price }}</small></p>
                  </div>   
                  
-                  <div class="card-footer">
-                       <small>
+                  <div class="card-footer  my-5">
+                      
                         <form method="post" action="{% url 'adjust_cart' item.id %}">
                             {% csrf_token %}
-                          
                                 <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                                <div class="input-group">
-                                 <span> <div class="input-group-addon">Qty</div>
-                                    <input name="quantity" type="number" min="0" max="999" class="form-control form-control-sm" value="{{item.quantity}}">
-                                   
-                                </span>
+                                <div class="input-group flex-nowrap">
+                                 <span> 
+                                 <div class="input-group-addon"></div>
+                                <input name="quantity" type="number" min="0" max="999" class="form-control form-control-sm" value="{{item.quantity}}">
+                                 </span>
+                                 <span> <button type="submit" class="btn btn-primary btn-sm ml-1 rounded-0 shadow-none btn-ammend text-nowrap">Amend</button>
+                                      </span>
                                 </div>
-                          
-                            <button type="submit" class="btn btn-primary btn-sm">Amend</button>
                         </form>
-                        </small>
+                       
                     </div>
             </div>
+        </div>
             {% endfor %}
-            </div>
+            
     </div>
 </div> 
 <div class="container">

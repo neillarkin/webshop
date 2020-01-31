@@ -9,20 +9,16 @@
 <div class="container">
   
   <div class="row justify-content-center">
-  
-
-        
         {% for genre in genres %}
         
-          <div class="card mb-3 mr-5" >
+          <div class="card mb-5 mr-5" >
             <div class="row no-gutters">
               
-              <div class="col-md-12">
-                <div class="card-body">
-                <h4 class="card-title "><a href="{% url 'genres_records' genre.id %}" >{{ genre.name }}</a></h4>
-                
+              <div class="col col-md-12">
+                <div class="card-body mx-auto">
+                <h5 class="card-title title-block text-nowrap text-center bd-highlight pl-3 pr-3 px-2  py-2"><a href="{% url 'genres_records' genre.id %}" >{{ genre.name }}</a></h5>
                   <p class="card-text">
-                   <span class="badge badge-secondary ">{{genre.number}}&nbsp;&nbsp;Records</span>
+                   <span class="badge badge-secondary genre-badge font-weight-light">{{genre.number}}&nbsp;&nbsp;Records</span>
                 </p>
                 
                 <p class="card-text"></p>
