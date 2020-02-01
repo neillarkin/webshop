@@ -15,9 +15,6 @@ Project code is is available here: https://github.com/neillarkin/atari-app
 #### Desktop
 
 
-#### Relational Database
-
-
 ## UX
 The primary target audience of the application is a potential employer who may be seeking out more information on my capabilities as a developer. The employer may only spend a short time using the application and so it is vital that is no major functional bug, is fully responsive and has a clean and professional interface that gives a positive user experience. The user should be able to quickly get an idea of my competency with modern front and back-end web technologies.
  
@@ -27,32 +24,32 @@ The secondary mock target audience for the application is that of the vinyl reco
 ### Use case scenarios
 Below are some stories that a typical user can follow:
 
-*A new user should be able to:
-** Visualize the home page and view all the records currently on sale
-** Visualize the artists in the store
-** Visualize an artists records
-** Visualize genres in the store
-** Visualize a genres records
-** Visualize the navigation bar and links to all sections of the site
-** Visualize a search bar for finding records.
-** Return to a previous page with using a device or browsers back button
-** Register and create an account
+* A new user should be able to:
+– Visualize the home page and view all the records currently on sale
+– Visualize the artists in the store
+– Visualize an artists records
+– Visualize genres in the store
+– Visualize a genres records
+– Visualize the navigation bar and links to all sections of the site
+– Visualize a search bar for finding records.
+– Return to a previous page with using a device or browsers back button
+– Register and create an account
 
 * An active user should be able to purchase a record
-** Visualize and browse all the records on sale
-** Visualize records by genre
-** Filter categories from the navigation bar
-** Perform searches from the navigation bar
-** Register or log in to an account
-** Edit a profile
-** Add, remove or amend records in a cart
-** Add contact and payment details
-** Pay for a record(s) 
+– Visualize and browse all the records on sale
+– Visualize records by genre
+– Filter categories from the navigation bar
+– Perform searches from the navigation bar
+– Register or log in to an account
+– Edit a profile
+– Add, remove or amend records in a cart
+– Add contact and payment details
+– Pay for a record(s) 
 
 * When a registered user wants to add a record to their wishlist
-** Add a record to their wishlist
-** Edit and Save wishlist item
-** Delete a wishlist item
+– Add a record to their wishlist
+– Edit and Save wishlist item
+– Delete a wishlist item
 
 ## Features
 * Browse all records by artist or genre.
@@ -116,3 +113,59 @@ Below is a list of the apps and automated tests that were performed:
 * genres – Model tested for instantiation. Views tested for status 200 on all-genres and genre-records templates. Views tests for 404 codes.
 * home –  Views tested for status 200 and 404 codes
 * records – Model tested for instantiation. View templates tested for status 200 on all-records and 404 for no data returned.
+
+### Manual testing was performed on areas of the project that were not tested by automation. 
+
+1) Launch and browse all views of the app on both Chrome and Firefox and Safari desktop browsers.
+* Verify app views are accessible and not items are significantly misaligned or truncated.
+
+2) Launch and browse all views of the app on both Chrome and Firefox and Safari mobile browsers.
+* Verify app views are accessible and not items are significantly misaligned or truncated.
+
+### Navbar
+1) Click the sore icon at the top-left of the home page. Verify the a list of records appears. Verify there is not back-button visible at the top-left of the page.
+1) Click the Records link: Verify a list of records appears. Verify the back button is now visible.
+2) Click the Artists link: Verify a list of artists appears. Click the back button. Verify the previous page appears.
+3) Click and artist with not records. Verify a message appears.
+3) Click an artist with no records. Verify a message appears.
+4) Click the Genre link: Verify a drop-down menu of genres appears.
+5) Click the genre menu item called All. Verify: a page of genres appears. Verify a genre with 0 records displays a message.
+
+### Search
+1) Enter an artist name in to the search field and click the search button. Verify the artist appear in the results. 
+2) Enter a record name in to the search field and click the search button. Verify the artist appear in the results.
+3) Enter no data in to the search field and click the search button Verify a message appears of no results found.
+
+### Profile
+1) Register an account. Verify: the home page is visible after login.
+2) Browse to the profile page:  Verify: the profile page is visible
+3) Browse to the profile page:  Edit the users details and save. Verify: the details have been updated.
+4) Browse to the profile page: Click the Reset Password link. Verify an email form appears. Enter an email and click submit. Verify reset link appears in your inbox.
+4) Logout. Verify: the home page is visible after logout.
+
+### Wishlist: 
+1) Browse to the Profile page. Verify: a wishlist form is visible.
+2) Click the Add a record link. Verify: a form appears with arts and name labels and a button.
+3) Enter information in to the wishlist form and click Submit. Verify: the item appears in the list.
+4) Delete and item from the wishlist. Verify: A prompt message appears and the item can be deleted.
+
+### Cart:
+1) Add an item to cart: Verify: the item appears in the cart.
+2) Navigate to the cart. Verify: the cart view is visible with the added item.
+3) Navigate to the cart. Adjust the item quantity. Verify the quantity updates.
+
+### Checkout:
+1) Add an item to cart. Click the checkout button. Verify: a user information form appears.
+2) Add details in to the cart checkout form and click Submit payment. Verify the user is redirected to the home page with a message promoting on successful payment.
+
+### Bugs/Issues
+Reset password email is not working. The email is not being sent.
+
+### Deployment
+The project has been deployed to both Github and Heroku with media and static files on AWS S3. The version on Heroku is what was used for testing and is considered to be at a production level. The primary differences between both versions is in the Settings config file where the Debug mode has been disabled for security and the env variable has been commented out. 
+On occasion the Github base.html may contain differences between the CSS and JS file references where they were being switched from S3 to local (Cloud9) during editing. 
+
+#### Credits and Sources
+- Most of the code concepts and logic was taken from Niels and Aarons course work in the ‘Full Stack Frameworks with Django’ modules.
+- Bootstrap 4 played a significant role in making adjustments to UI compared to previous projects where adjustments were done in CSS3
+
