@@ -2,7 +2,7 @@ from django.test import TestCase
 from .models import Artist
 
 """
-Test Artist object as string and its string attribute
+Test Artist object cn be instantiated
 
 """
 

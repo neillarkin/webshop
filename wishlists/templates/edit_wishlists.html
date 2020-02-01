@@ -11,21 +11,22 @@
     <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-             <i class="fas fa-user fa-9x"></i>
+            <div class="card-text">
+            <i class="fas fa-user fa-4x mb-3 mt-3 px-3 py-3 border"></i></div>
+
              
             <form method="post" action="{% url 'update_profile' %}">
                 {% csrf_token %}
                 <h6 class="card-title">Name: 
                 <span class="text-muted">{{ user }} </span></h6>
                 <h6  class="card-text">Email:
-                <span class="text-muted"> {{ profile.email }}</span></h6>
-                <button class="btn btn-primary">Edit</button>
+                <span class="text-muted"> {{ user.email }}</span></h6>
             </form>
             
             <div class="row">
                 <div class="col-md-12 mt-1">
                     <p class="float-right">
-                        <a href="{% url 'password_reset' %}">Reset Password</a>
+                        
                     </p>
                 </div>
             </div>
@@ -57,7 +58,7 @@
                 <input name = "record_name" type="text" class="form-control" 
                 id="formGroupInput2" placeholder="Track title">
               </div>
-             <button class="btn btn-primary" type="button" 
+             <button class="btn btn-primary rounded-0 shadow-none" type="button" 
              data-toggle="collapse" data-target="#collapse" aria-expanded="false" 
              aria-controls="collapse">Submit</button>
             </form>
@@ -77,9 +78,9 @@
                             </div>
                         </li>
                     </ul>
-                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary btn-sm rounded-0 shadow-none" type="submit">Save</button>
                       <a type="reset" href="{% url 'profile' %}" 
-                      class="btn btn-secondary ">Cancel</a>
+                      class="btn btn-secondary btn-sm rounded-0 shadow-none">Cancel</a>
                 </form>
             </div>
         </div>

@@ -15,7 +15,7 @@
 
           <form method="post" action="{% url 'edit_profile' %}">
             {% csrf_token %}
-            <h6 class="card-title">Username: <span class="text-muted">
+            <h6 class="card-title">Username: <span class="text-muted ">
               <a href="{% url 'edit_profile' %}">{{ user }}</a></span>
             </h6>
             <h6 class="card-text">Email: <span class="text-muted">
@@ -105,13 +105,13 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
-            Do you want to remove<strong>{{ wish.record_name }}</strong> from your wishlist?
+            Do you want to remove <strong>{{ wish.record_name }}</strong> from your wishlist?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-sm" 
+              <button type="button" class="btn btn-secondary btn-sm rounded-0 shadow-none" 
               data-dismiss="modal">Cancel</button>
               <a href="{% url 'remove_wish' wish.id %}" 
-              class="btn btn-danger btn-sm">Delete</a>
+              class="btn btn-danger btn-sm rounded-0 shadow-none">Delete</a>
             </div>
           </div>
         </div>
