@@ -75,9 +75,6 @@ Below are some stories that a typical user can follow:
 * Functionality to display how many items are currently in stock
 * Notify users when their wishlist item comes back in stock
 
-## Relational database
-The app uses MongoDB to store three collections called games, developers and years. GridFS is used to create two more collections (fs.files & fs.chunks) are used to store image files.
-The app uses a one-to-many relationship between games and artists(developers). One game can have many artists. Each artists’ Object ID is intended to be used as a foreign key in each game document.
 
 ## Technologies
 The application was built using collection of modern technologies:
@@ -96,12 +93,12 @@ The application was built using collection of modern technologies:
 A complete list of technologies and versions is listed in the Requirements.txt file on Github
 
 ## Database Schema
-!{}(https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/relationship-db.png)
+![](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/relationship-db.png)
 
 ## Testing
 Test driven development methods were used during development. Django in-built unit-test features were used to perform basic test on various views and classes of the application. 
 
-###Automated tests were performed on various models, views and forms of the project.
+### Automated tests were performed on various models, views and forms of the project.
 Results of the tests can be seen here: 
 [![Build Status](https://travis-ci.org/neillarkin/webshop.svg?branch=master)](https://travis-ci.org/neillarkin/webshop)
 
