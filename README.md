@@ -95,8 +95,8 @@ The application was built using collection of modern technologies:
 
 A complete list of technologies and versions is listed in the Requirements.txt file on Github
 
-##Database Schema
-
+## Database Schema
+!{}(https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/relationship-db.png)
 
 ## Testing
 Test driven development methods were used during development. Django in-built unit-test features were used to perform basic test on various views and classes of the application. 
