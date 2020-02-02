@@ -8,11 +8,11 @@ A live version of the app is hosted here: https://neils-webshop.herokuapp.com/
 
 Project code is is available here: https://github.com/neillarkin/atari-app 
 
-## WireFrame
-#### Mobile
+## WireFrames
 
-
-#### Desktop
+* [Mobile](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/01.mobile.jpg)
+* [Tablet](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/02.tablet.jpg)
+* [Desktop](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/01.desktop.jpg)
 
 
 ## UX
@@ -66,7 +66,7 @@ Below are some stories that a typical user can follow:
 * Loads quickly
 * Easy to navigate on any device
 
-## Features to implement
+### Features to implement
 * Improve search results to display both records and artists on the same page
 * Improve the send email functionality when resetting a password
 * Functionality to display how many items are currently in stock
@@ -93,14 +93,14 @@ A complete list of technologies and versions is listed in the Requirements.txt f
 ![](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/relationship-db.png)
 
 ## Testing
-Test driven development methods were used during development. Django in-built unit-test features were used to perform basic test on various views and classes of the application. 
+Test driven development methods were used during development. Django in-built unit-test features were used to perform basic test on various views and classes of the application. Defensive design was incorporated on pages where no results were found, prompting an error message for empty result sets.
 
 ### Automated tests were performed on various models, views and forms of the project.
 Results of the tests can be seen here: 
 [![Build Status](https://travis-ci.org/neillarkin/webshop.svg?branch=master)](https://travis-ci.org/neillarkin/webshop)
 
 
-1)  Classes can be instantiated with local data stored in its attributes. Examples of these tests are in the test_models.py scripts throughout the various apps.
+1) Classes can be instantiated with local data stored in its attributes. Examples of these tests are in the test_models.py scripts throughout the various apps.
 
 2) View functions were tested to see if they act correctly by returning a template with a status code 200 or in some cases a status 404 if incorrect parameter data was passed.
 
@@ -122,7 +122,7 @@ Below is a list of the apps and automated tests that were performed:
 2) Launch and browse all views of the app on both Chrome and Firefox and Safari mobile browsers.
 * Verify app views are accessible and not items are significantly misaligned or truncated.
 
-### Navbar
+#### Navbar
 1) Click the sore icon at the top-left of the home page. Verify the a list of records appears. Verify there is not back-button visible at the top-left of the page.
 1) Click the Records link: Verify a list of records appears. Verify the back button is now visible.
 2) Click the Artists link: Verify a list of artists appears. Click the back button. Verify the previous page appears.
@@ -131,34 +131,34 @@ Below is a list of the apps and automated tests that were performed:
 4) Click the Genre link: Verify a drop-down menu of genres appears.
 5) Click the genre menu item called All. Verify: a page of genres appears. Verify a genre with 0 records displays a message.
 
-### Search
+#### Search
 1) Enter an artist name in to the search field and click the search button. Verify the artist appear in the results. 
 2) Enter a record name in to the search field and click the search button. Verify the artist appear in the results.
 3) Enter no data in to the search field and click the search button Verify a message appears of no results found.
 
-### Profile
+#### Profile
 1) Register an account. Verify: the home page is visible after login.
 2) Browse to the profile page:  Verify: the profile page is visible
 3) Browse to the profile page:  Edit the users details and save. Verify: the details have been updated.
 4) Browse to the profile page: Click the Reset Password link. Verify an email form appears. Enter an email and click submit. Verify reset link appears in your inbox.
 4) Logout. Verify: the home page is visible after logout.
 
-### Wishlist: 
+#### Wishlist: 
 1) Browse to the Profile page. Verify: a wishlist form is visible.
 2) Click the Add a record link. Verify: a form appears with arts and name labels and a button.
 3) Enter information in to the wishlist form and click Submit. Verify: the item appears in the list.
 4) Delete and item from the wishlist. Verify: A prompt message appears and the item can be deleted.
 
-### Cart:
+#### Cart:
 1) Add an item to cart: Verify: the item appears in the cart.
 2) Navigate to the cart. Verify: the cart view is visible with the added item.
 3) Navigate to the cart. Adjust the item quantity. Verify the quantity updates.
 
-### Checkout:
+#### Checkout:
 1) Add an item to cart. Click the checkout button. Verify: a user information form appears.
 2) Add details in to the cart checkout form and click Submit payment. Verify the user is redirected to the home page with a message promoting on successful payment.
 
-### Bugs/Issues
+#### Bugs/Issues
 Reset password email is not working. The email is not being sent.
 
 ### Deployment
@@ -168,4 +168,5 @@ On occasion the Github base.html may contain differences between the CSS and JS 
 #### Credits and Sources
 - Most of the code concepts and logic was taken from Niels and Aarons course work in the ‘Full Stack Frameworks with Django’ modules.
 - Bootstrap 4 played a significant role in making adjustments to UI compared to previous projects where adjustments were done in CSS3
+- Some forms such as Registration, Login, Checkout, Password Reset forms are taken from the Boostrap 4 library
 

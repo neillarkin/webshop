@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
                 <input class="form-control mr-sm-2 col-8 mysearchbox" type="search" name="q" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success  my-sm-0 col-2" type="submit"><i class="fas fa-search"></i></button>
+                <button class="btn btn-outline-success btn-sm rounded-0 my-sm-0 col-2" type="submit"><i class="fas fa-search"></i></button>
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'artists' %}">Artists</a></li>
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col-sm-2 col-md-2">
                 <div class="row"> 
-                    <h4 class="page-heading text-nowrap bd-highlight 
+                    <h4 class="page-heading text-nowrap text-capitalize bd-highlight 
                     mr-2 pl-3 pr-3 px-2  py-2" >
                          {% block page_heading %}{% endblock %}
                     </h4> 
