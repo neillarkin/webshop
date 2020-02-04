@@ -10,22 +10,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">
-    <!--<link rel="stylesheet" href="/static/css/custom.css" type="text/css">-->
+    <link rel="icon" type="image/x-icon" href="{% static 'branding/favicon.ico' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="/static/js/parallax.min.js"></script>
     <script src="{% static 'js/functions.js' %}"></script>
-     <!--<script src="/static/js/functions.js"></script>-->
+     
     {% block head_js %} {% endblock head_js %}
 </head>
 
 <body>
+    
+ <div class="parallax-window" data-parallax="scroll" data-image-src="/static/images/rack02.jpg" data-z-index="-1">   
     <header>  
     <div id="back-button" class="float-left mt-3"> 
         <a href="{{request.META.HTTP_REFERER}}"><i class="fas fa-arrow-circle-left fa-2x"></i></a> 
     </div>
-    <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light ">
         <button class="navbar-toggler " type="button" data-toggle="collapse" 
         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
         aria-expanded="false" aria-label="Toggle navigation">
@@ -79,6 +82,9 @@
     <hr class="mx-0 my-0 ">
 </header>  
 
+  
+
+
     {% if messages %}
         <div class="alert alert-warning" role="alert">
             {% for message in messages %} 
@@ -88,32 +94,64 @@
             {% endfor %}
         </div>
     {% endif %}
-    
+
     <main class="my-4">
+        
     <div class="container">
-        <div class="row">
-        </div>
+    
         <div class="row">
             <div class="col-sm-2 col-md-2">
                 <div class="row"> 
                     <h4 class="page-heading text-nowrap text-capitalize bd-highlight 
-                    mr-2 pl-3 pr-3 px-2  py-2" >
+                    mr-2 mb-0 pl-3 pr-3 px-2 py-2">
                          {% block page_heading %}{% endblock %}
                     </h4> 
                 </div> 
             </div>
         </div>
     </div>
-</main>
+
+    </main>
 
     {% block content %}
     {% endblock %}
     
-    <hr class="mx-0 ">
-    <footer class="float-center">
+</div>
+
+<footer>
     <div class="container">
-            <p class="text-muted text-center font-italic"><small>Developed by Neil Larkin © 2019</small></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                        <h6 class="text-center text-dark font-weight-bold">Get Connected!</h6>
+                    </div>
+                </div>
+                
+                <p class="text-muted text-center">
+                    <a href = "#" ><span class="text-center"><i class="fab fa-twitter-square fa-3x mr-1"></i></span></a>
+                    <a href = "#" ><span class="text-nowrap"><i class="fab fa-facebook-square fa-3x mr-1"></i></span></a>
+                    <a href = "#" ><span class="text-center"><i class="fab fa-soundcloud fa-3x mr-1"></i></span></a>
+                    <a href = "#" ><span class="text-nowrap"><i class="fab fa-spotify fa-3x mr-1"></i></span></a>
+                    <a href = "#" ><span class="text-center"><i class="fab fa-youtube-square fa-3x mr-1"></i></span></a>
+                    <a href = "#" ><span class="text-nowrap"><i class="fab fa-itunes fa-3x mr-1"></i></span></a>
+                </p>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p class="text-muted"><small class="text-left text-nowrap">Vinyl Records © 2019</small></p>
+            </div>
+            
+            <div class="col-md-10">
+                <p class="text-muted">
+                    <a href = "#" ><small class="text-nowrap float-right ml-3 ">T & C</small></a>
+                    <a href = "#" ><small class="text-nowrap float-right">Privacy Policy</small></a>
+                </p>
+            </div>
+        </div>
+    
+    </div>
 </footer>
 
 

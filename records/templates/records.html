@@ -6,20 +6,22 @@
 
 {% block content %}
 
-<div class="container">
-<div class="row row-cols-1 row-cols-md-3">
+<div class="container wrapper ">
+ 
+<div class="row row-cols-1 row-cols-md-3   ">
 
     
   {% for record in records %}
     <div class="col mb-5 my-5">
       {% if not records %}
-        <p class="text-center">No Records in store!</p>
+        <p class="stock-msg text-center">No Records in store!</p>
       {% endif %}
       
       <div class="card h-100">
-        <img class="card-img-top mx-auto mt-n5" 
+        <img class="card-img-top vinyl-img mx-auto mt-n5" 
         src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
         
+        <img class="record_cover mx-auto mt-n5" src="{{ record.description }}" alt="record artwork">
         <div class="card-body mx-auto">
           
           <h5 class="card-title title-block text-nowrap text-center 
@@ -37,7 +39,7 @@
           <p class="card-text text-center">€{{ record.price }}</p>
         </div>
         
-        <div class="card-footer ">
+        <div class="card-footer mx-auto">
           <form method="post" action="{% url 'add_to_cart' record.id %}">
             {% csrf_token %}
               <div class="input-group flex-nowrap">
@@ -46,7 +48,7 @@
                   type="number" min="1" max="999"  value="1">
                 </span> 
                 <span class="input-group-btn">
-                  <button class="btn btn-success btn-sm mx-1 my-1 rounded-0 shadow-none" 
+                  <button class="btn btn-success btn-sm mx-1 my-0 rounded-0 shadow-none" 
                   type="submit"><small class="text-nowrap">Add to Cart</small></button>
                 </span>
               </div>

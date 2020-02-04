@@ -7,7 +7,7 @@
 {% block page_heading %}User Login{% endblock %} 
 
 {% block content %}
-<div class="container">
+<div class="container login-form">
     <div class="row justify-content-center">
         <div class="col-md-4 ml-4 mr-4 my-4">
             <form method="POST">
@@ -15,7 +15,7 @@
                 {% csrf_token %} 
                 {{ login_form | as_bootstrap }}
                   </div>
-                <button type="submit" class="btn btn-primary float-right">
+                <button type="submit" class="btn btn-primary float-right rounded-0 shadow-none">
                     Login</button>
             </form>
        </div>

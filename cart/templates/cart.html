@@ -25,7 +25,7 @@
                     <p class="card-text"><small>€{{ item.record.price }}</small></p>
                 </div>   
                  
-                <div class="card-footer  my-5">
+                <div class="card-footer  ">
                     <form method="post" action="{% url 'adjust_cart' item.id %}">
                         {% csrf_token %}
                         <label for="exampleInputAmount" class="sr-only">New Qty</label>
@@ -65,7 +65,7 @@
               </p>
             {% else %}
                 <p class="float-right"><a href="{% url 'checkout' %}" 
-                class="btn btn-success rounded-0" role="button">Checkout</a></p> 
+                class="btn btn-success rounded-0 shadow-none" role="button">Checkout</a></p> 
             {% endif %}
         </div>
     </div>

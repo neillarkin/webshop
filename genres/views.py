@@ -38,6 +38,13 @@ def genres_records(request, id):
         pass
     else:
         messages.success(request, "No records in this genre!")
-
+    
+    artist_list = []
+    for record in genres_records:
+        if record.artist in artist_list:
+            None
+        else:
+            artist_list.append(record.artist)
+  
     return render(request, "genres_records.html", {"genres": genres, 
-    "genre": genre, "genres_records": genres_records})
+    "genre": genre, "genres_records": genres_records, "artist":artist_list})
