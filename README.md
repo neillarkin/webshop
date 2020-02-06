@@ -8,6 +8,8 @@ A live version of the app is hosted here: https://neils-webshop.herokuapp.com/
 
 Project code is is available here: https://github.com/neillarkin/atari-app 
 
+[![Build Status](https://travis-ci.org/neillarkin/webshop.svg?branch=master)](https://travis-ci.org/neillarkin/webshop)
+
 ## WireFrames
 
 * [Mobile](https://neils-webshop.s3-eu-west-1.amazonaws.com/documentation/01.mobile.jpg)
