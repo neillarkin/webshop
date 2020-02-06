@@ -19,28 +19,27 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container wrapper-form">
 <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">{{ record_count }}&nbspitems</span>
+            <span>Your cart</span>
+            <span class="badge badge-warning badge-pill">{{ record_count }}&nbspitems</span>
         </h4>
                 
         <ul class="list-group mb-3">
-                    {% for item in cart_items %}
-                     <li class="list-group-item d-flex justify-content-between lh-condensed">
-                          <div>
-                            <h6 class="my-0">{{ item.record.name }}</h6>
-                            <small class="text-muted">{{ item.record.description }}</small>
-                          </div>
-                            <span class="text-muted">{{ item.quantity }} &nbsp;x&nbsp; €{{ item.record.price }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
+                {% for item in cart_items %}
+                 <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">{{ item.record.name }}</h6>
+                      </div>
+                        <span class="text-white">{{ item.quantity }} &nbsp;x&nbsp; €{{ item.record.price }}</span>
+                </li>
+                {% endfor %}
+            </ul>
         <div class="col float-right">
-                    <span>Total:&nbsp</span>
-                  <strong>€{{ total }}</strong>
+                    <span >Total:&nbsp</span>
+                   <span ><strong>€{{ total }}</strong></span>
                 </div>
     </div>
         

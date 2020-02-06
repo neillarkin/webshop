@@ -16,9 +16,9 @@
          
         <form method="post" action="{% url 'update_profile' %}">
             {% csrf_token %}
-            <h6 class="card-title">Name:  <input name="username" type="text" 
+            <h6 class="card-title text-muted">Name:  <input name="username" type="text" 
             value="{{user}}" class="mt-2"></h6>
-            <h6  class="card-text">Email:  <input name="email" type="text" 
+            <h6  class="card-text text-muted">Email:  <input name="email" type="text" 
             value="{{ profile.email }}" class="mb-4"></h6>
             <div class="card-footer"> 
             <button type="submit" class="btn btn-primary btn-sm rounded-0 

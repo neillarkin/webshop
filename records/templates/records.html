@@ -18,25 +18,30 @@
       {% endif %}
       
       <div class="card h-100">
+      
         <img class="card-img-top vinyl-img mx-auto mt-n5" 
         src="{{ MEDIA_URL }}{{ record.image }}" alt="Card image cap">
         
-        <img class="record_cover mx-auto mt-n5" src="{{ record.description }}" alt="record artwork">
-        <div class="card-body mx-auto">
+        <img class="record_cover mx-auto mt-n5" src="{{ record.description }}" 
+        alt="record artwork">
+        <div class="card-body mx-auto ">
           
           <h5 class="card-title title-block text-nowrap text-center 
-          bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">
+          bd-highlight mt-n5 pb-2 pl-3 pr-3 px-2  py-2">
             <a href="{% url 'artists_records' record.artist_id %}">{{ record.artist }}</a>
           </h5>
           
-          <p class="card-text text-center">{{ record.name }}</p>
+          <a href="{% url 'artists_records' record.artist_id %}">
+            <p class="card-text text-center">{{ record.name }}</p></a>
           <p class="card-text text-center">
             {% for genre in record.genres.all %}
              <a href="{% url 'genres_records' genre.id %}">
-              <small>{{ genre|join:", " }}</small></a>
+              <span class="text-dark border bg-light p-1">
+                <small>{{ genre|join:", " }}</small></a></span>
             {% endfor %}
           </p>
-          <p class="card-text text-center">€{{ record.price }}</p>
+          <p class="card-text text-center">
+            <span class="badge badge-warning">€{{ record.price }}</span></p>
         </div>
         
         <div class="card-footer mx-auto">

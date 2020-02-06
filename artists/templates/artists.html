@@ -6,12 +6,13 @@
     {% for artist in artists %}
 
     <div class="col mb-4">
-            <div class="card h-100 ">
+        <div class="card h-100">
                 <div class=" mx-auto">
-                <img class="mx-auto my-n3" src="https://img.icons8.com/material/120/000000/human-head.png">
+                <img class="artist-img mx-auto my-n3" 
+                src="https://neils-webshop.s3-eu-west-1.amazonaws.com/media/images/vinyl-record.png">
                 </div>
 
-                <div class="card-body  mx-auto">
+                <div class="card-body mx-auto border border-dark">
                     <h5 class="card-title title-block text-nowrap text-center 
                     bd-highlight mt-n5 pl-3 pr-3 px-2  py-2">{{ artist.name }}
                     </h5>
@@ -35,7 +36,7 @@
                 </div>
 
             </div>
-        </div>
+    </div>
         
     {% endfor %}
     </div>

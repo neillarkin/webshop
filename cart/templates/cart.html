@@ -9,23 +9,25 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container wrapper">
     <div class="row row-cols-1 row-cols-md-3">
         {% for item in cart_items %}
         <div class="col-sm-12 col-md-3 mb-5 my-5">   
             <div class="card h-100">
-                <img class="card-img-top mx-auto mt-n5" 
+                <img class="card-img-top vinyl-img  mx-auto mt-n5" 
                 src="{{ MEDIA_URL }}{{ item.record.image }}" 
                 alt="Card image cap">
-        
-                <div class="card-body mx-auto">
+                 <img class="record_cover mx-auto mt-n5" 
+                 src="{{ item.record.description }}" alt="record artwork">
+       
+                <div class="card-body mx-auto mt-n5 border border-dark">
                     <h6 class="card-title text-normal">{{ item.record.artist }}</h6>
                     <h6 class="card-title text-muted font-italic">
                         <small>"{{ item.record.name }}"</small></h6>
                     <p class="card-text"><small>€{{ item.record.price }}</small></p>
                 </div>   
                  
-                <div class="card-footer  ">
+                <div class="card-footer mx-auto ">
                     <form method="post" action="{% url 'adjust_cart' item.id %}">
                         {% csrf_token %}
                         <label for="exampleInputAmount" class="sr-only">New Qty</label>
@@ -51,15 +53,15 @@
     <div class="row">
         <div class="col mx-auto">
          
-            <p class="float-right mt-2 mr-1"> €{{ total }}</p> 
-            <p class="float-right mt-2">Total:&nbsp;</p> 
+            <p class="float-right mt-2 mr-1 bg-white p-1"> €{{ total }}</p> 
+            <p class="float-right bg-white mt-2 bg-white p-1">Total:&nbsp;</p> 
 
          </div>
     </div>
     <div class="row">
         <div class="col mx-auto">
             {% if total <= 0 %}
-              <p class="text-center">Your cart is empty!</p>
+              <p class="text-center "><span class="bg-white p-2">Your cart is empty!</span></p>
               <p class="float-right"><a href="#" class="btn btn-secondary 
                disabled" role="button" aria-disabled="true">Checkout</a>
               </p>

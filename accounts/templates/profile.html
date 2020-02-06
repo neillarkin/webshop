@@ -15,14 +15,14 @@
 
           <form method="post" action="{% url 'edit_profile' %}">
             {% csrf_token %}
-            <h6 class="card-title">Username: <span class="text-muted ">
+            <h6 class="card-title text-muted">Username: <span class="text-muted ">
               <a href="{% url 'edit_profile' %}">{{ user }}</a></span>
             </h6>
-            <h6 class="card-text">Email: <span class="text-muted">
+            <h6 class="card-text text-muted">Email: <span class="text-muted">
               <a href="{% url 'edit_profile' %}">{{ profile.email }}</a></span>
               </h6>
           </form>
-
+          <hr>
           <div class="card-footer py-4">
             <p class="float-right">
               <a href="{% url 'password_reset' %}">Reset Password</a>
