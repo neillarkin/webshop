@@ -6,8 +6,6 @@ The application is a mock online record store that allows vinyl collecting enthu
 
 A live version of the app is hosted here: https://neils-webshop.herokuapp.com/ 
 
-Project code is is available here: https://github.com/neillarkin/atari-app 
-
 [![Build Status](https://travis-ci.org/neillarkin/webshop.svg?branch=master)](https://travis-ci.org/neillarkin/webshop)
 
 ## WireFrames
